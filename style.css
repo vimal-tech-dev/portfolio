@@ -182,16 +182,14 @@ body.dark footer {
   position: absolute;
   top: 15px;
   right: 20px;
-  background: #ff9800;
-  color: #fff;
+  background: none;
   border: none;
-  padding: 8px 14px;
-  border-radius: 5px;
+  font-size: 22px;
   cursor: pointer;
-  font-size: 14px;
-  transition: background 0.3s;
+  color: #ff9800;
+  transition: transform 0.3s;
 }
 
 #darkModeToggle:hover {
-  background: #e68900;
+  transform: scale(1.2);
 }
