@@ -10,7 +10,11 @@ body {
   background: #f4f4f4;
   color: #333;
   line-height: 1.6;
-  transition: background 0.3s, color 0.3s;
+  transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+header, footer, .skill, .project-card, #about {
+  transition: background-color 0.6s ease, color 0.6s ease, box-shadow 0.6s ease;
 }
 
 header {
@@ -59,6 +63,7 @@ h1, h2 {
   justify-content: center;
   align-items: center;
   text-align: center;
+  transition: background-color 0.6s ease, color 0.6s ease;
 }
 
 #hero h1 {
@@ -76,7 +81,6 @@ h1, h2 {
   padding: 3rem 2rem;
   border-radius: 10px;
   margin-bottom: 2rem;
-  transition: background 0.3s, color 0.3s;
 }
 
 /* ===== Skills Section ===== */
@@ -92,7 +96,7 @@ h1, h2 {
   text-align: center;
   border-radius: 10px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-  transition: transform 0.3s, background 0.3s, color 0.3s;
+  transition: transform 0.3s, background-color 0.6s ease, color 0.6s ease;
 }
 
 .skill:hover {
@@ -111,7 +115,7 @@ h1, h2 {
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-  transition: transform 0.3s, background 0.3s, color 0.3s;
+  transition: transform 0.3s, background-color 0.6s ease, color 0.6s ease;
 }
 
 .project-card:hover {
@@ -122,6 +126,7 @@ h1, h2 {
 #contact {
   text-align: center;
   padding: 2rem 0;
+  transition: color 0.6s ease;
 }
 
 #contact a {
