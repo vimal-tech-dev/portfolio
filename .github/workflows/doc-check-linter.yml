@@ -1,0 +1,36 @@
+name: Lint Code Base
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install linters
+        run: |
+          npm install -g eslint stylelint htmlhint
+
+      - name: Lint JavaScript with ESLint
+        run: |
+          eslint . --ext .js,.jsx || true
+
+      - name: Lint CSS with Stylelint
+        run: |
+          stylelint "**/*.{css,scss}" || true
+
+      - name: Lint HTML with HTMLHint
+        run: |
+          htmlhint "**/*.html" || true
