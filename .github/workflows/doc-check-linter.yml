@@ -1,4 +1,4 @@
-name: Lint Code Base
+name: Lint Code Base & DCO Check
 
 on:
   push:
@@ -9,7 +9,6 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,13 +23,21 @@ jobs:
           npm install -g eslint stylelint htmlhint
 
       - name: Lint JavaScript with ESLint
-        run: |
-          eslint . --ext .js,.jsx || true
+        run: eslint . --ext .js,.jsx
 
       - name: Lint CSS with Stylelint
-        run: |
-          stylelint "**/*.{css,scss}" || true
+        run: stylelint "**/*.{css,scss}"
 
       - name: Lint HTML with HTMLHint
-        run: |
-          htmlhint "**/*.html" || true
+        run: htmlhint "**/*.html"
+
+  dco:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # required so commit history is available
+
+      - name: DCO Check
+        uses: timja/dco-check@v0.6.0
