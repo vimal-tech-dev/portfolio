@@ -1,0 +1,30 @@
+name: Lint Code Base
+
+on:
+  push:
+    branches:
+      - main # Or your primary branch
+  pull_request:
+    branches:
+      - main # Or your primary branch
+
+jobs:
+  build:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          # Super-Linter needs the full git history to get the
+          # list of files that changed across commits
+          fetch-depth: 0
+
+      - name: Super-Linter
+        uses: super-linter/super-linter@v6 # Use the latest stable version
+        env:
+          VALIDATE_HTML: true
+          VALIDATE_CSS: true
+          VALIDATE_JAVASCRIPT_ES: true # For modern JavaScript
+          VALIDATE_JAVASCRIPT_STANDARD: true # For standard JavaScript
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
