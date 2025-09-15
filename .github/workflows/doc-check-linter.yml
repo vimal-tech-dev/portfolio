@@ -9,7 +9,6 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,8 +19,7 @@ jobs:
           node-version: 20
 
       - name: Install linters
-        run: |
-          npm install -g eslint stylelint htmlhint
+        run: npm install -g eslint stylelint htmlhint
 
       - name: Lint JavaScript with ESLint
         run: eslint . --ext .js,.jsx
@@ -32,11 +30,45 @@ jobs:
       - name: Lint HTML with HTMLHint
         run: htmlhint "**/*.html"
 
-  dco:
+  dco-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: DCO Check
-        uses: timja/dco-check@v1
+        uses: tisonkun/actions-dco@v1.1
+
+  gpg-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify GPG signatures
+        run: |
+          git fetch --unshallow
+          git log --show-signature -1
+          # Fail if the latest commit is not GPG signed and verified
+          if ! git log --show-signature -1 | grep -q "Good signature"; then
+            echo "❌ Commit is not GPG signed and verified!"
+            exit 1
+          fi
+
+  ssh-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: |
+            ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Checkout repository with SSH
+        uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-known-hosts: github.com
+
+      - name: Test SSH connection
+        run: ssh -T git@github.com || true
