@@ -1,4 +1,4 @@
-name: Lint Code Base & DCO Check
+name: CI Checks
 
 on:
   push:
@@ -9,6 +9,7 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -34,10 +35,8 @@ jobs:
   dco:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # required so commit history is available
 
       - name: DCO Check
-        uses: timja/dco-check@v0.6.0
+        uses: timja/dco-check@v1
