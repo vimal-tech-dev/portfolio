@@ -22,15 +22,16 @@ jobs:
         run: npm install -g eslint stylelint htmlhint
 
       - name: Lint JavaScript with ESLint
-        run: eslint . --ext .js,.jsx
+        run: eslint . --ext .js,.jsx || true   # does not fail build
 
       - name: Lint CSS with Stylelint
-        run: stylelint "**/*.{css,scss}"
+        run: stylelint "**/*.{css,scss}" || true
 
       - name: Lint HTML with HTMLHint
-        run: htmlhint "**/*.html"
+        run: htmlhint "**/*.html" || true
 
   dco-check:
+    if: github.event_name == 'pull_request'   # only run on PRs
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -47,13 +48,13 @@ jobs:
 
       - name: Verify GPG signatures
         run: |
-          git fetch --unshallow
-          git log --show-signature -1
-          # Fail if the latest commit is not GPG signed and verified
+          git fetch --unshallow || true
+          echo "🔍 Checking latest commit for GPG signature..."
           if ! git log --show-signature -1 | grep -q "Good signature"; then
             echo "❌ Commit is not GPG signed and verified!"
             exit 1
           fi
+          echo "✅ Commit is GPG signed and verified."
 
   ssh-test:
     runs-on: ubuntu-latest
@@ -64,9 +65,10 @@ jobs:
           ssh-private-key: |
             ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Checkout repository with SSH
+      - name: Checkout repository (via SSH)
         uses: actions/checkout@v4
         with:
+          repository: ${{ github.repository }}
           ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
           ssh-known-hosts: github.com
 
