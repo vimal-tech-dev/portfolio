@@ -1,4 +1,4 @@
-name: CI Checks
+name: Portfolio CI Checks
 
 on:
   push:
@@ -7,10 +7,14 @@ on:
     branches: [ main ]
 
 jobs:
+
+  # -------------------
+  # 1. Lint HTML, CSS, JS
+  # -------------------
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -21,56 +25,84 @@ jobs:
       - name: Install linters
         run: npm install -g eslint stylelint htmlhint
 
-      - name: Lint JavaScript with ESLint
-        run: eslint . --ext .js,.jsx || true   # does not fail build
+      - name: Lint JavaScript
+        run: eslint . --ext .js,.jsx || true
 
-      - name: Lint CSS with Stylelint
+      - name: Lint CSS
         run: stylelint "**/*.{css,scss}" || true
 
-      - name: Lint HTML with HTMLHint
+      - name: Lint HTML
         run: htmlhint "**/*.html" || true
 
+  # -------------------
+  # 2. DCO Check (Signed-off-by)
+  # -------------------
   dco-check:
-    if: github.event_name == 'pull_request'   # only run on PRs
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: DCO Check
         uses: tisonkun/actions-dco@v1.1
 
+  # -------------------
+  # 3. GPG Verification
+  # -------------------
   gpg-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Verify GPG signatures
+      - name: Import trusted GPG key(s)
+        run: |
+          echo "${{ secrets.GPG_PUBLIC_KEYS }}" > ~/trusted_keys.asc
+          gpg --import ~/trusted_keys.asc
+          gpg --list-keys
+
+      - name: Verify latest commit GPG signature
         run: |
           git fetch --unshallow || true
           echo "🔍 Checking latest commit for GPG signature..."
           if ! git log --show-signature -1 | grep -q "Good signature"; then
-            echo "❌ Commit is not GPG signed and verified!"
+            echo "❌ Commit is not GPG signed with a trusted key!"
             exit 1
           fi
           echo "✅ Commit is GPG signed and verified."
 
-  ssh-test:
+  # -------------------
+  # 4. SSH Setup
+  # -------------------
+  ssh-setup:
     runs-on: ubuntu-latest
     steps:
-      - name: Start SSH agent
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: |
-            ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY_JAVA }}" > ~/.ssh/id_rsa_vimal_java
+          chmod 600 ~/.ssh/id_rsa_vimal_java
 
-      - name: Checkout repository (via SSH)
+          # Configure SSH alias
+          cat >> ~/.ssh/config <<EOF
+          Host github.com-java
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/id_rsa_vimal_java
+          EOF
+
+          chmod 600 ~/.ssh/config
+
+      - name: Add GitHub to known_hosts
+        run: ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Test SSH connection
+        run: ssh -T git@github.com-java || true
+
+      - name: Checkout repository via SSH alias
         uses: actions/checkout@v4
         with:
           repository: ${{ github.repository }}
-          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-key: ${{ secrets.SSH_KEY_JAVA }}
           ssh-known-hosts: github.com
-
-      - name: Test SSH connection
-        run: ssh -T git@github.com || true
