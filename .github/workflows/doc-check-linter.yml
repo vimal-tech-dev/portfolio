@@ -1,4 +1,4 @@
-name: Portfolio CI Checks
+name: Portfolio CI
 
 on:
   push:
@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.SSH_KEY_JAVA }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -43,6 +45,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.SSH_KEY_JAVA }}
 
       - name: DCO Check
         uses: tisonkun/actions-dco@v1.1
@@ -55,6 +59,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.SSH_KEY_JAVA }}
 
       - name: Import trusted GPG key(s)
         run: |
@@ -71,38 +77,3 @@ jobs:
             exit 1
           fi
           echo "✅ Commit is GPG signed and verified."
-
-  # -------------------
-  # 4. SSH Setup
-  # -------------------
-  ssh-setup:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_KEY_JAVA }}" > ~/.ssh/id_rsa_vimal_java
-          chmod 600 ~/.ssh/id_rsa_vimal_java
-
-          # Configure SSH alias
-          cat >> ~/.ssh/config <<EOF
-          Host github.com-java
-            HostName github.com
-            User git
-            IdentityFile ~/.ssh/id_rsa_vimal_java
-          EOF
-
-          chmod 600 ~/.ssh/config
-
-      - name: Add GitHub to known_hosts
-        run: ssh-keyscan github.com >> ~/.ssh/known_hosts
-
-      - name: Test SSH connection
-        run: ssh -T git@github.com-java || true
-
-      - name: Checkout repository via SSH alias
-        uses: actions/checkout@v4
-        with:
-          repository: ${{ github.repository }}
-          ssh-key: ${{ secrets.SSH_KEY_JAVA }}
-          ssh-known-hosts: github.com
