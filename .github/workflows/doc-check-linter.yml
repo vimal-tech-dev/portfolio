@@ -59,8 +59,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          ssh-key: ${{ secrets.SSH_KEY_JAVA }}
 
       - name: Import trusted GPG key(s)
         run: |
