@@ -1,4 +1,4 @@
-name: Lint Code Base
+name: Portfolio CI
 
 on:
   push:
@@ -7,11 +7,14 @@ on:
     branches: [ main ]
 
 jobs:
+
+  # -------------------
+  # 1. Lint HTML, CSS, JS
+  # -------------------
   lint:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -20,17 +23,53 @@ jobs:
           node-version: 20
 
       - name: Install linters
-        run: |
-          npm install -g eslint stylelint htmlhint
+        run: npm install -g eslint stylelint htmlhint
 
-      - name: Lint JavaScript with ESLint
-        run: |
-          eslint . --ext .js,.jsx || true
+      - name: Lint JavaScript
+        run: eslint . --ext .js,.jsx || true
 
-      - name: Lint CSS with Stylelint
-        run: |
-          stylelint "**/*.{css,scss}" || true
+      - name: Lint CSS
+        run: stylelint "**/*.{css,scss}" || true
 
-      - name: Lint HTML with HTMLHint
+      - name: Lint HTML
+        run: htmlhint "**/*.html" || true
+
+  # -------------------
+  # 2. DCO Check (Signed-off-by)
+  # -------------------
+  dco-check:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.SSH_KEY_JAVA }}
+
+      - name: DCO Check
+        uses: tisonkun/actions-dco@v1.1
+
+  # -------------------
+  # 3. GPG Verification
+  # -------------------
+  gpg-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Import trusted GPG key(s)
         run: |
-          htmlhint "**/*.html" || true
+          echo "${{ secrets.GPG_PUBLIC_KEYS }}" > ~/trusted_keys.asc
+          gpg --import ~/trusted_keys.asc
+          gpg --list-keys
+
+      - name: Verify latest commit GPG signature
+        run: |
+          git fetch --unshallow || true
+          echo "🔍 Checking latest commit for GPG signature..."
+          if ! git log --show-signature -1 | grep -q "Good signature"; then
+            echo "❌ Commit is not GPG signed with a trusted key!"
+            exit 1
+          fi
+          echo "✅ Commit is GPG signed and verified."
