@@ -43,11 +43,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-<<<<<<< HEAD
-=======
-        with:
-          ssh-key: ${{ secrets.SSH_KEY_JAVA }}
->>>>>>> 76f8b5f (Feature-Branch deleted)
 
       - name: DCO Check
         uses: tisonkun/actions-dco@v1.1
@@ -56,7 +51,6 @@ jobs:
   # 3. GPG Verification
   # -------------------
   gpg-check:
-<<<<<<< HEAD
   runs-on: ubuntu-latest
   steps:
     - name: Checkout repository
@@ -91,25 +85,3 @@ jobs:
         echo "❌ Commit is not GPG signed with a trusted key!"
         exit 1
 
-=======
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Import trusted GPG key(s)
-        run: |
-          echo "${{ secrets.GPG_PUBLIC_KEYS }}" > ~/trusted_keys.asc
-          gpg --import ~/trusted_keys.asc
-          gpg --list-keys
-
-      - name: Verify latest commit GPG signature
-        run: |
-          git fetch --unshallow || true
-          echo "🔍 Checking latest commit for GPG signature..."
-          if ! git log --show-signature -1 | grep -q "Good signature"; then
-            echo "❌ Commit is not GPG signed with a trusted key!"
-            exit 1
-          fi
-          echo "✅ Commit is GPG signed and verified."
->>>>>>> 76f8b5f (Feature-Branch deleted)
