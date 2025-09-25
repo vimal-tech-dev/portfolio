@@ -11,154 +11,224 @@ body {
   color: #333;
   line-height: 1.6;
   transition: background-color 0.6s ease, color 0.6s ease;
+  scroll-behavior: smooth;
 }
 
-header, footer, .skill, .project-card, #about {
-  transition: background-color 0.6s ease, color 0.6s ease, box-shadow 0.6s ease;
+/* Headings */
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
-header {
+/* ===== Navbar ===== */
+header.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   background: #222;
   color: #fff;
-  padding: 1rem 0;
-  text-align: center;
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+header .logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  gap: 25px;
 }
 
 nav ul li a {
   color: #fff;
   text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
+  font-weight: 500;
+  transition: color 0.3s, border-bottom 0.3s;
 }
 
 nav ul li a:hover {
   color: #ff9800;
-}
-
-.container {
-  width: 80%;
-  margin: auto;
-  overflow: hidden;
-  padding: 2rem 0;
-}
-
-h1, h2 {
-  margin-bottom: 1rem;
-  color: inherit;
+  border-bottom: 2px solid #ff9800;
 }
 
 /* ===== Hero Section ===== */
-#hero {
-  background: #333 url('https://source.unsplash.com/1600x500/?technology,coding') no-repeat center center/cover;
-  height: 60vh;
-  color: #fff;
+.hero {
+  background: url('https://source.unsplash.com/1600x800/?technology,programming') no-repeat center/cover;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  transition: background-color 0.6s ease, color 0.6s ease;
+  color: #fff;
+  position: relative;
 }
 
-#hero h1 {
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.hero h1 {
   font-size: 3rem;
-  margin-bottom: 10px;
 }
 
-#hero p {
+.hero p {
   font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.hero .btn {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 30px;
+  background: #ff9800;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.hero .btn:hover {
+  background: #e68900;
+  transform: translateY(-3px);
+}
+
+/* ===== Containers ===== */
+.container {
+  width: 85%;
+  margin: auto;
+  padding: 3rem 0;
+}
+
+/* Fade-in animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ===== About Section ===== */
 #about {
   background: #fff;
   padding: 3rem 2rem;
-  border-radius: 10px;
-  margin-bottom: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* ===== Skills Section ===== */
-#skills {
+.skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.2rem;
 }
 
-.skill {
+.skill-card {
   background: #fff;
-  padding: 1rem;
+  padding: 1.5rem;
   text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-  transition: transform 0.3s, background-color 0.6s ease, color 0.6s ease;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.skill:hover {
-  transform: translateY(-5px);
+.skill-card i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #ff9800;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* ===== Projects Section ===== */
-.projects {
+.projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .project-card {
   background: #fff;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-  transition: transform 0.3s, background-color 0.6s ease, color 0.6s ease;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* ===== Contact Section ===== */
 #contact {
   text-align: center;
-  padding: 2rem 0;
-  transition: color 0.6s ease;
 }
 
-#contact a {
+.contact-links a {
   display: inline-block;
   margin: 10px;
-  padding: 10px 20px;
+  padding: 12px 20px;
   background: #ff9800;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 30px;
   text-decoration: none;
-  transition: background 0.3s;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.3s;
 }
 
-#contact a:hover {
+.contact-links a:hover {
   background: #e68900;
+  transform: translateY(-3px);
 }
 
+/* ===== Footer ===== */
 footer {
   text-align: center;
-  padding: 1rem;
+  padding: 1.2rem;
   background: #222;
   color: #fff;
   margin-top: 2rem;
+  font-size: 0.9rem;
 }
 
-/* ===== Dark Mode Styles ===== */
+/* ===== Dark Mode ===== */
 body.dark {
   background: #181818;
   color: #e0e0e0;
 }
 
-body.dark header {
+body.dark header.navbar {
   background: #111;
 }
 
@@ -171,7 +241,7 @@ body.dark nav ul li a:hover {
 }
 
 body.dark #about,
-body.dark .skill,
+body.dark .skill-card,
 body.dark .project-card {
   background: #242424;
   color: #e0e0e0;
@@ -181,11 +251,15 @@ body.dark footer {
   background: #111;
 }
 
+body.dark .hero::after {
+  background: rgba(0, 0, 0, 0.7);
+}
+
 /* ===== Floating Dark Mode Toggle ===== */
 #darkModeToggle {
   position: fixed;
-  bottom: 60px;
-  left: 5px;
+  bottom: 20px;
+  right: 20px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -194,12 +268,127 @@ body.dark footer {
   color: #fff;
   font-size: 22px;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: background 0.3s, transform 0.3s;
   z-index: 1000;
 }
 
 #darkModeToggle:hover {
   background: #e68900;
+  transform: rotate(20deg) scale(1.1);
+}
+
+/* Tooltip */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 130px;
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 6px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -65px;
+  opacity: 0;
+  transition: opacity 0.4s;
+  font-size: 0.8rem;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Highlight active nav link */
+nav ul li a.active {
+  color: #ff9800;
+  border-bottom: 2px solid #ff9800;
+}
+
+/* ===== Scroll to Top Button ===== */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 2000;
+  width: 50px;
+  height: 50px;
+  border: none;
+  outline: none;
+  background-color: #ff9800;
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 0 8px rgba(255, 152, 0, 0.5);
+  transition: opacity 0.4s, transform 0.3s, background 0.3s, box-shadow 0.3s;
+  opacity: 0;
+  pointer-events: none;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+#scrollTopBtn:hover {
+  background-color: #e68900;
   transform: scale(1.1);
+}
+
+/* ===== Dark Mode Override ===== */
+body.dark #scrollTopBtn {
+  background-color: #ff9800;
+  color: #fff;
+}
+
+body.dark #scrollTopBtn:hover {
+  background-color: #e68900;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.4);
+  }
+
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 16px rgba(255, 152, 0, 0.6);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.4);
+  }
+}
+
+/* Show when scrolling (with pulse glow) */
+#scrollTopBtn.show {
+  opacity: 1;
+  pointer-events: auto;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Stop pulse on hover and add stronger glow */
+#scrollTopBtn:hover {
+  background-color: #e68900;
+  transform: scale(1.1);
+  animation: none;
+  /* stop pulsing */
+  box-shadow: 0 0 18px rgba(255, 152, 0, 0.8);
 }

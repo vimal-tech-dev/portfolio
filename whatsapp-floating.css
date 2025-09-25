@@ -1,23 +1,59 @@
-/* Floating WhatsApp button */
+/* ===== Floating WhatsApp Button ===== */
 .whatsapp-float {
     position: fixed;
-    bottom: 60px;
-    right: 5px;
-    background: #25d366;
+    bottom: 100px;
+    /* slightly higher to avoid overlap */
+    right: 20px;
+    z-index: 1000;
+    background-color: #25d366;
     color: #fff;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 28px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    transition: transform 0.3s ease;
+    box-shadow: 0 0 8px rgba(37, 211, 102, 0.5);
+    transition: transform 0.3s ease, background 0.3s, box-shadow 0.3s;
+    animation: pulseWhatsApp 2.5s infinite ease-in-out;
 }
 
+/* Pulse animation for WhatsApp */
+@keyframes pulseWhatsApp {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 8px rgba(37, 211, 102, 0.5);
+    }
+
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 16px rgba(37, 211, 102, 0.8);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 8px rgba(37, 211, 102, 0.5);
+    }
+}
+
+/* Hover effect */
 .whatsapp-float:hover {
-    transform: scale(1.1);
-    background: #20b857;
+    transform: scale(1.15);
+    background-color: #1ebe57;
+    box-shadow: 0 0 20px rgba(37, 211, 102, 1);
+    animation: none;
+    /* stop pulsing on hover */
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 600px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        bottom: 90px;
+        /* slightly higher on mobile */
+        right: 15px;
+    }
 }
