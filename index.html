@@ -4,27 +4,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vimal Tech</title>
-  <!-- <link rel="stylesheet" href="https://vimal-tech-dev.github.io/portfolio/style.css"> -->
+  <title>Vimal Tech | Java Developer</title>
   <link rel="stylesheet" href="style.css">
-
-  <!-- JavaScript for Dark Mode -->
-  <!-- Option 1: Place in head with defer attribute -->
-  <!-- <script src="script.js" defer></script> -->
-
-  <!-- Font Awesome for WhatsApp Icon -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="whatsapp-floating.css">
 </head>
 
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>Vimal Tech</h1>
-    <p>Java Developer | Backend Engineer</p>
+  <!-- Header / Navbar -->
+  <header class="navbar">
+    <div class="logo">Vimal Tech</div>
     <nav>
       <ul>
+        <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -34,92 +28,90 @@
   </header>
 
   <!-- Hero Section -->
-  <section id="hero">
-    <div>
-      <h1>Hello, I'm Vimal</h1>
-      <p>A Passionate Java Developer who builds scalable backend applications</p>
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <h1>Hello, I'm <span class="highlight">Vimal</span></h1>
+      <p>A Passionate <strong>Java Developer</strong> building scalable backend applications</p>
+      <a href="#projects" class="btn">View My Work</a>
     </div>
   </section>
 
   <!-- About Section -->
-  <div class="container" id="about">
+  <section id="about" class="container fade-in">
     <h2>About Me</h2>
     <p>
-      I am a Java Developer with experience in building backend systems, REST APIs, and enterprise applications.
-      Skilled in Java, Spring Boot, Hibernate, SQL, and cloud technologies. Passionate about writing clean,
-      maintainable, and efficient code.
+      I am a Java Developer with hands-on experience in building backend systems, REST APIs, and enterprise
+      applications.
+      Skilled in <strong>Java, Spring Boot, Hibernate, SQL</strong>, and <strong>Cloud Technologies</strong>.
+      Passionate about writing clean, maintainable, and efficient code.
     </p>
-  </div>
+  </section>
 
   <!-- Skills Section -->
-  <div class="container" id="skills">
-    <div class="skill">
-      <h3>Java</h3>
+  <section id="skills" class="container fade-in">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card"><i class="fab fa-java"></i>
+        <h3>Java</h3>
+      </div>
+      <div class="skill-card"><i class="fas fa-leaf"></i>
+        <h3>Spring Boot</h3>
+      </div>
+      <div class="skill-card"><i class="fas fa-database"></i>
+        <h3>Hibernate</h3>
+      </div>
+      <div class="skill-card"><i class="fas fa-plug"></i>
+        <h3>REST APIs</h3>
+      </div>
+      <div class="skill-card"><i class="fas fa-server"></i>
+        <h3>MySQL</h3>
+      </div>
+      <div class="skill-card"><i class="fab fa-aws"></i>
+        <h3>AWS</h3>
+      </div>
+      <div class="skill-card"><a href="https://github.com/vimal-java-dev/" target="_blank">GitHub-1</a></div>
+      <div class="skill-card"><a href="https://github.com/vimal-tech-dev/" target="_blank">GitHub-2</a></div>
+      <div class="skill-card"><a href="https://github.com/vimal-tech-starter/" target="_blank">GitHub-3</a></div>
+      <div class="skill-card"><a href="https://vimal-java-dev.github.io/" target="_blank">Tech Stacks</a></div>
     </div>
-    <div class="skill">
-      <h3>Spring Boot</h3>
-    </div>
-    <div class="skill">
-      <h3>Hibernate</h3>
-    </div>
-    <div class="skill">
-      <h3>REST APIs</h3>
-    </div>
-    <div class="skill">
-      <h3>MySQL</h3>
-    </div>
-    <div class="skill">
-      <h3>AWS</h3>
-    </div>
-    <div class="skill">
-      <h3><a href="https://github.com/vimal-java-dev/" target="_blank">GitHub-1</a></h3>
-    </div>
-    <div class="skill">
-      <h3><a href="https://github.com/vimal-tech-dev/" target="_blank">GitHub-2</a></h3>
-    </div>
-    <div class="skill">
-      <h3><a href="https://github.com/vimal-tech-starter/" target="_blank">GitHub-3</a></h3>
-    </div>
-    <div class="skill">
-      <h3><a href="https://vimal-java-dev.github.io/" target="_blank">Tech Stacks</a></h3>
-    </div>
-
-  </div>
+  </section>
 
   <!-- Projects Section -->
-  <div class="container" id="projects">
+  <section id="projects" class="container fade-in">
     <h2>Projects</h2>
-    <div class="projects">
+    <div class="projects-grid">
       <div class="project-card">
-        <h3>Data Streaming App(POC)</h3>
-        <p>POC with Spring Boot, Apache Kafka & Spark, Docker & Apache ZooKeeper for real-time data processing</p>
+        <h3>Data Streaming App (POC)</h3>
+        <p>Spring Boot + Kafka + Spark + Docker for real-time data processing.</p>
       </div>
       <div class="project-card">
         <h3>Library Management System</h3>
-        <p>A Java-based system with Spring Boot and MySQL to manage books, members, and loans.</p>
+        <p>Spring Boot & MySQL app to manage books, members, and loans.</p>
       </div>
       <div class="project-card">
         <h3>E-commerce Backend</h3>
-        <p>REST API backend built with Java, Spring Boot, and Hibernate for order management.</p>
+        <p>REST API backend with Java, Spring Boot, and Hibernate.</p>
       </div>
       <div class="project-card">
         <h3>Chat Application</h3>
-        <p>Real-time chat app using Java WebSocket and Spring Boot.</p>
+        <p>Real-time chat with Java WebSocket & Spring Boot.</p>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Contact Section -->
-  <div class="container" id="contact">
+  <section id="contact" class="container fade-in">
     <h2>Contact Me</h2>
-    <p>If you’d like to collaborate, feel free to reach out:<br>+91 96 38 474047</p>
-    <a href="tel:+919638474047">Call Me</a>
-    <a href="mailto:vimal.patel@vimaltech.dev">Email</a>
-    <a href="https://www.linkedin.com/in/vimaltech-dev/" target="_blank">LinkedIn</a>
-  </div>
+    <p>If you’d like to collaborate, feel free to reach out:</p>
+    <div class="contact-links">
+      <a href="tel:+919638474047"><i class="fas fa-phone"></i> Call</a>
+      <a href="mailto:vimal.patel@vimaltech.dev"><i class="fas fa-envelope"></i> Email</a>
+      <a href="https://www.linkedin.com/in/vimaltech-dev/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </div>
+  </section>
 
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/919638474047?text=Hello!%20Vimal.%0AI%20would%20like%20to%20know%20more%20about%20your%20tech%20services."
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/919638474047?text=Hello%20Vimal%2C%20I%20would%20like%20to%20know%20more%20about%20your%20tech%20services."
     class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
@@ -129,15 +121,17 @@
     <p>&copy; 2025 Vimal Patel | Java Developer Portfolio</p>
   </footer>
 
-  <!-- Floating Dark Mode Button -->
-  <button id="darkModeToggle">🌙</button>
+  <!-- Dark Mode Toggle -->
+  <button id="darkModeToggle" class="tooltip">🌙
+    <span class="tooltiptext" id="toggleTooltip">Switch to dark mode</span>
+  </button>
 
-  <!-- JavaScript for Dark Mode -->
-  <!-- <script src="https://vimal-tech-dev.github.io/portfolio/script.js"></script> -->
+  <!-- Scroll to Top Button -->
+  <button id="scrollTopBtn" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
-  <!-- Option 2: Place at the end of the body (traditional method) -->
   <script src="script.js"></script>
-
 </body>
 
 </html>
