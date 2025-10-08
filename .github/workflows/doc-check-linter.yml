@@ -51,36 +51,41 @@ jobs:
   # 3. GPG Verification
   # -------------------
   gpg-check:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    runs-on: ubuntu-latest
 
-    - name: Verify GPG signatures (trusted keys + GitHub web-flow)
-      run: |
-        git fetch --unshallow || true
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # needed for full git history
 
-        echo "🔍 Checking latest commit..."
-        SIG=$(git log --show-signature -1)
-        echo "$SIG"
+      - name: Import trusted GPG public keys
+        run: |
+          # Your keys + GitHub merge key
+          gpg --keyserver keyserver.ubuntu.com --recv-keys \
+            D432152833DA3244 \
+            7F4C7CA953E1C09E \
+            C97540DA6C9FA85C \
+            4AEE18F83AFDEB23
 
-        # Replace these with your actual key IDs from both PCs
-        # Get them using: gpg --list-secret-keys --keyid-format=long
-        TRUSTED_KEYS="D432152833DA3244 7F4C7CA953E1C09E C97540DA6C9FA85C"
+      - name: Verify latest commit signature
+        run: |
+          echo "🔍 Checking latest commit..."
+          SIG=$(git log --show-signature -1)
+          echo "$SIG"
 
-        # GitHub's web-flow signing key (for merge commits)
-        GITHUB_KEY="4AEE18F83AFDEB23"
+          TRUSTED_KEYS="D432152833DA3244 7F4C7CA953E1C09E C97540DA6C9FA85C"
+          GITHUB_KEY="4AEE18F83AFDEB23"
+          TRUSTED="$TRUSTED_KEYS $GITHUB_KEY"
 
-        TRUSTED="$TRUSTED_KEYS $GITHUB_KEY"
+          if echo "$SIG" | grep -q "Good signature"; then
+            for key in $TRUSTED; do
+              if echo "$SIG" | grep -q "$key"; then
+                echo "✅ Commit signed with trusted key: $key"
+                exit 0
+              fi
+            done
+          fi
 
-        if echo "$SIG" | grep -q "Good signature"; then
-          for key in $TRUSTED; do
-            if echo "$SIG" | grep -q "$key"; then
-              echo "✅ Commit signed with trusted key: $key"
-              exit 0
-            fi
-          done
-        fi
-
-        echo "❌ Commit is not GPG signed with a trusted key!"
-        exit 1
+          echo "❌ Commit is not GPG signed with a trusted key!"
+          exit 1
