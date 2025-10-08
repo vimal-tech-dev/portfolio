@@ -2,12 +2,11 @@ name: Portfolio CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-
   # -------------------
   # 1. Lint HTML, CSS, JS
   # -------------------
@@ -51,37 +50,36 @@ jobs:
   # 3. GPG Verification
   # -------------------
   gpg-check:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Verify GPG signatures (trusted keys + GitHub web-flow)
-      run: |
-        git fetch --unshallow || true
+      - name: Verify GPG signatures (trusted keys + GitHub web-flow)
+        run: |
+          git fetch --unshallow || true
 
-        echo "🔍 Checking latest commit..."
-        SIG=$(git log --show-signature -1)
-        echo "$SIG"
+          echo "🔍 Checking latest commit..."
+          SIG=$(git log --show-signature -1)
+          echo "$SIG"
 
-        # Replace these with your actual key IDs from both PCs
-        # Get them using: gpg --list-secret-keys --keyid-format=long
-        TRUSTED_KEYS="D432152833DA3244 7F4C7CA953E1C09E C97540DA6C9FA85C"
+          # Replace these with your actual key IDs from both PCs
+          # Get them using: gpg --list-secret-keys --keyid-format=long
+          TRUSTED_KEYS="D432152833DA3244 7F4C7CA953E1C09E C97540DA6C9FA85C"
 
-        # GitHub's web-flow signing key (for merge commits)
-        GITHUB_KEY="4AEE18F83AFDEB23"
+          # GitHub's web-flow signing key (for merge commits)
+          GITHUB_KEY="4AEE18F83AFDEB23"
 
-        TRUSTED="$TRUSTED_KEYS $GITHUB_KEY"
+          TRUSTED="$TRUSTED_KEYS $GITHUB_KEY"
 
-        if echo "$SIG" | grep -q "Good signature"; then
-          for key in $TRUSTED; do
-            if echo "$SIG" | grep -q "$key"; then
-              echo "✅ Commit signed with trusted key: $key"
-              exit 0
-            fi
-          done
-        fi
+          if echo "$SIG" | grep -q "Good signature"; then
+            for key in $TRUSTED; do
+              if echo "$SIG" | grep -q "$key"; then
+                echo "✅ Commit signed with trusted key: $key"
+                exit 0
+              fi
+            done
+          fi
 
-        echo "❌ Commit is not GPG signed with a trusted key!"
-        exit 1
-
+          echo "❌ Commit is not GPG signed with a trusted key!"
+          exit 1
