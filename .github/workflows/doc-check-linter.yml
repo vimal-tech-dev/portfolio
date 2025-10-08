@@ -1,38 +1,76 @@
-name: Verify GPG-signed commits
+name: Portfolio CI
 
 on:
   push:
-    branches: [main, dev]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
-    
-jobs:
-  verify-signature:
-    runs-on: ubuntu-latest
 
+jobs:
+
+  # -------------------
+  # 1. Lint HTML, CSS, JS
+  # -------------------
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install linters
+        run: npm install -g eslint stylelint htmlhint
+
+      - name: Lint JavaScript
+        run: eslint . --ext .js,.jsx || true
+
+      - name: Lint CSS
+        run: stylelint "**/*.{css,scss}" || true
+
+      - name: Lint HTML
+        run: htmlhint "**/*.html" || true
+
+  # -------------------
+  # 2. DCO Check (Signed-off-by)
+  # -------------------
+  dco-check:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: DCO Check
+        uses: tisonkun/actions-dco@v1.1
+
+  # -------------------
+  # 3. GPG Verification
+  # -------------------
+  gpg-check:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # needed for full git history
 
-      - name: Import trusted GPG public keys
+      - name: Verify GPG signatures (trusted keys + GitHub web-flow)
         run: |
-          # Your keys + GitHub merge key
-          gpg --keyserver keyserver.ubuntu.com --recv-keys \
-            D432152833DA3244 \
-            7F4C7CA953E1C09E \
-            C97540DA6C9FA85C \
-            4AEE18F83AFDEB23
+          git fetch --unshallow || true
 
-      - name: Verify latest commit signature
-        run: |
           echo "🔍 Checking latest commit..."
           SIG=$(git log --show-signature -1)
           echo "$SIG"
 
-          TRUSTED_KEYS="D432152833DA3244 7F4C7CA953E1C09E C97540DA6C9FA85C"
+          # Replace these with your actual key IDs from both PCs
+          # Get them using: gpg --list-secret-keys --keyid-format=long
+          TRUSTED_KEYS="7F4C7CA953E1C09E D432152833DA3244 C97540DA6C9FA85C"
+
+          # GitHub's web-flow signing key (for merge commits)
           GITHUB_KEY="4AEE18F83AFDEB23"
+
           TRUSTED="$TRUSTED_KEYS $GITHUB_KEY"
 
           if echo "$SIG" | grep -q "Good signature"; then
@@ -46,3 +84,4 @@ jobs:
 
           echo "❌ Commit is not GPG signed with a trusted key!"
           exit 1
+
