@@ -66,7 +66,7 @@ jobs:
 
           # Replace these with your actual key IDs from both PCs
           # Get them using: gpg --list-secret-keys --keyid-format=long
-          TRUSTED_KEYS="7F4C7CA953E1C09E D432152833DA3244 C97540DA6C9FA85C"
+          TRUSTED_KEYS="D432152833DA3244 7F4C7CA953E1C09E C97540DA6C9FA85C"
 
           # GitHub's web-flow signing key (for merge commits)
           GITHUB_KEY="4AEE18F83AFDEB23"
@@ -84,4 +84,3 @@ jobs:
 
           echo "❌ Commit is not GPG signed with a trusted key!"
           exit 1
-
