@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5ce3cde (Icon pisition)
 // ===== Particles.js Hero Background (Dynamic for Dark Mode) =====
 // ===== Initialize Particles.js with Theme-Aware Colors ===== (Applied before)
 // ===== Initialize Particles.js with Orange (Light) & Cyan (Dark) Themes ===== (Applied)
@@ -126,8 +129,11 @@ function updateToggleIcon() {
     }
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> 1ffaec2 (Favicon added & services created)
+=======
+>>>>>>> 5ce3cde (Icon pisition)
 // Hamburger Menu
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("nav-links");
@@ -175,6 +181,7 @@ scrollTopBtn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 // ===== Particles.js Hero Background (Dynamic for Dark Mode) =====
@@ -281,4 +288,6 @@ function updateOverlayGradient() {
 
 
 >>>>>>> 1ffaec2 (Favicon added & services created)
+=======
+>>>>>>> 5ce3cde (Icon pisition)
 
