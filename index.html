@@ -4,9 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Java Developer Portfolio</title>
+  <title>Vimal Tech - Portfolio</title>
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="main-service.css">
   <link rel="stylesheet" href="whatsapp-floating.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -23,17 +28,18 @@
 </style>
 
 <body>
-
   <!-- Header / Navbar -->
   <nav class="navbar">
     <div class="logo">VIMAL TECH</div>
 
     <ul class="nav-links" id="nav-links">
       <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="#tech-stack">Tech Stack</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="services.html">Services</a></li> <!-- New Services link -->
     </ul>
     <!-- hamburger icon -->
     <div style="display: flex; align-items: center;">
@@ -59,6 +65,51 @@
       Skilled in <strong>Java, Spring Boot, Hibernate, SQL</strong>, and <strong>Cloud Technologies</strong>.
       Passionate about writing clean, maintainable, and efficient code.
     </p>
+  </section>
+
+  <!-- Tech Stack Section -->
+  <section id="tech-stack" class="container fade-in">
+    <h2>Tech Stack Dashboard</h2>
+    <p>
+      <a href="https://vimal-java-dev.github.io/" target="_blank">Tap to open page</a>
+    </p>
+  </section>
+
+  <!-- Mini Services Preview Section -->
+  <section id="services-preview" class="container fade-in">
+    <h2>Services I Offer</h2>
+    <p>Explore professional services to help build and scale your projects:</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <i class="fas fa-server"></i>
+        <h3>Backend Development</h3>
+        <p>Scalable backend apps using Java, Spring Boot, and Microservices.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-cloud"></i>
+        <h3>Cloud Integration</h3>
+        <p>Deploy and manage applications efficiently on AWS.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-database"></i>
+        <h3>Database Management</h3>
+        <p>Manage relational and NoSQL databases like MySQL, PostgreSQL, MongoDB.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-project-diagram"></i>
+        <h3>Project Consulting</h3>
+        <p>Architecture guidance and microservices design for enterprise projects.</p>
+      </div>
+    </div>
+
+    <div class="cta-section" style="margin-top:20px; text-align:center;">
+      <a href="services.html" class="btn">View All Services</a>
+      <p style="margin-top:10px;">
+        Check my live project:
+        <a href="https://alexfoodcorner.netlify.app/" target="_blank">Alex Food Corner</a>
+      </p>
+    </div>
   </section>
 
   <!-- Skills Section -->
@@ -125,8 +176,8 @@
       <div class="skill-card"><i class="fab fa-jira"></i>
         <h3>Jira</h3>
       </div>
-      <div class="skill-card"><i class="fab fa-github"></i><br><a href="https://vimal-java-dev.github.io/"
-          target="_blank">GitHub</a></div>
+      <div class="skill-card"><a href="https://vimal-java-dev.github.io/#links" target="_blank">
+          <i class="fab fa-github"></i><br>GitHub</a></div>
     </div>
   </section>
 
@@ -165,7 +216,7 @@
   </section>
 
   <!-- Floating WhatsApp -->
-  <a href="https://wa.me/919638474047?text=Hello%20Vimal%2C%20I%20would%20like%20to%20know%20more%20about%20your%20tech%20services."
+  <a href="https://wa.me/919638474047?text=Hello%20Vimal%2C%0AI%20would%20like%20to%20know%20more%20about%20your%20tech%20services."
     class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
@@ -177,7 +228,7 @@
 
   <!-- Dark Mode Toggle -->
   <button id="darkModeToggle" class="tooltip">🌙
-    <span class="tooltiptext" id="toggleTooltip">Switch to dark mode</span>
+    <!-- <span class="tooltiptext" id="toggleTooltip">Switch to dark mode</span> -->
   </button>
 
   <!-- Scroll to Top Button -->

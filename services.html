@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vimal Tech - Services</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <!-- CSS -->
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="whatsapp-floating.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Particles.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">VIMAL TECH</div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <!-- hamburger icon -->
+        <div style="display: flex; align-items: center;">
+            <div class="hamburger" id="hamburger">&#9776;</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Particles + Animated Overlay -->
+    <section class="hero-services">
+        <div id="particles-js"></div>
+        <div class="gradient-overlay"></div>
+        <div class="hero-content">
+            <h1>Our <span class="highlight">Professional Services</span></h1>
+            <p>Delivering scalable, secure, and modern efficient solutions for web, mobile, and enterprise systems.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="container">
+        <h2 class="section-title fade-in">Services We Offer</h2>
+        <p class="fade-in">Explore our expertise to scale your projects efficiently:</p>
+
+        <div class="services-grid">
+            <div class="service-card fade-in" style="--delay:0s;">
+                <i class="fas fa-server"></i>
+                <h3>Backend Development</h3>
+                <p>Scalable applications using Java, Spring Boot, and Microservices.</p>
+            </div>
+            <div class="service-card fade-in" style="--delay:0.1s;">
+                <i class="fas fa-cloud"></i>
+                <h3>Cloud Integration</h3>
+                <p>Deploy and manage apps efficiently on AWS and cloud platforms.</p>
+            </div>
+            <div class="service-card fade-in" style="--delay:0.2s;">
+                <i class="fas fa-database"></i>
+                <h3>Database Management</h3>
+                <p>Relational and NoSQL database design & management.</p>
+            </div>
+            <div class="service-card fade-in" style="--delay:0.3s;">
+                <i class="fas fa-project-diagram"></i>
+                <h3>Project Consulting</h3>
+                <p>Architecture guidance and microservices design for enterprise projects.</p>
+            </div>
+            <div class="service-card fade-in" style="--delay:0.4s;">
+                <i class="fas fa-code"></i>
+                <h3>API Development</h3>
+                <p>RESTful APIs and integrations for modern web & mobile apps.</p>
+            </div>
+            <div class="service-card fade-in" style="--delay:0.5s;">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Security & Optimization</h3>
+                <p>Secure, optimized, and maintainable solutions following best practices.</p>
+            </div>
+        </div>
+
+        <div class="cta-section fade-in" style="--delay:0.6s;">
+            <a href="https://alexfoodcorner.netlify.app/" target="_blank" class="btn">View Live Project</a>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/919638474047?text=Hello%20Vimal%2C%20I%20want%20to%20know%20more%20about%20your%20services."
+        class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <footer>
+        <p>&copy; 2025 Vimal Patel | Java Developer Portfolio</p>
+    </footer>
+
+    <!-- Dark Mode Toggle & ScrollTop Button -->
+    <button id="darkModeToggle" class="tooltip">🌙</button>
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JS -->
+    <script src="services.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,213 @@
+/* ===== HERO SECTION ===== */
+.hero-services {
+    position: relative;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    background: radial-gradient(circle at top right, #ff8c00, #ff5722);
+}
+
+/* Particles.js Canvas */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+/* Soft neon particle glow for dark mode */
+body.dark #particles-js canvas {
+    filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.35));
+    transition: filter 0.5s ease;
+}
+
+/* Smooth background color transition */
+body {
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ===== Dynamic Gradient Overlay ===== */
+:root {
+    --overlay-gradient: linear-gradient(45deg, rgba(255, 87, 34, 0.3), rgba(255, 255, 255, 0.15), rgba(255, 152, 0, 0.25));
+}
+
+/* body.dark {
+    --overlay-gradient: linear-gradient(45deg, rgba(33, 150, 243, 0.25), rgba(0, 0, 0, 0.3), rgba(63, 81, 181, 0.3));
+} */
+
+body.dark canvas {
+    filter: drop-shadow(0 0 4px rgba(0, 229, 255, 0.4));
+}
+
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: var(--overlay-gradient);
+    animation: waveMove 10s ease-in-out infinite alternate;
+    filter: blur(100px);
+    z-index: 1;
+    opacity: 0.6;
+}
+
+
+/* Animation Keyframes */
+@keyframes waveMove {
+    0% {
+        transform: translate(-20%, -20%) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(10%, 10%) rotate(15deg);
+    }
+
+    100% {
+        transform: translate(-10%, 20%) rotate(-15deg);
+    }
+}
+
+/* Hero Text */
+.hero-services .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    padding: 20px;
+}
+
+.hero-services h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.hero-services .highlight {
+    color: #ffeb3b;
+}
+
+.hero-services p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-services {
+        height: 60vh;
+    }
+
+    .hero-services h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-services p {
+        font-size: 1rem;
+    }
+}
+
+/* Services Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.service-card {
+    background: linear-gradient(145deg, #ffffff, #f9f9f9);
+    padding: 25px 20px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    animation: fadeUp 0.8s forwards;
+    animation-delay: var(--delay);
+}
+
+.service-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(145deg, #ffecb3, #ffe0b2);
+}
+
+.service-card i {
+    font-size: 2.8rem;
+    color: #ff9800;
+    margin-bottom: 15px;
+    transition: transform 0.3s, color 0.3s;
+    display: inline-block;
+    animation: iconBounce 2s infinite;
+}
+
+.service-card:hover i {
+    transform: rotate(15deg) scale(1.2);
+    color: #ff5722;
+}
+
+.service-card h3 {
+    margin: 12px 0 8px;
+    transition: color 0.3s ease;
+}
+
+.service-card:hover h3 {
+    color: #d2691e;
+}
+
+/* CTA Section */
+.cta-section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.cta-section a.btn {
+    background: #ff9800;
+    color: #fff;
+    padding: 14px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cta-section a.btn:hover {
+    background: #ff5722;
+    transform: scale(1.05);
+}
+
+/* Fade-in Animation */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Icon Bounce Animation */
+@keyframes iconBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
