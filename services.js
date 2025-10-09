@@ -1,3 +1,130 @@
+// ===== Particles.js Hero Background (Dynamic for Dark Mode) =====
+// ===== Initialize Particles.js with Theme-Aware Colors ===== (Applied before)
+// ===== Initialize Particles.js with Orange (Light) & Cyan (Dark) Themes ===== (Applied)
+function initParticles() {
+    const isDark = document.body.classList.contains("dark");
+
+    particlesJS("particles-js", {
+        "particles": {
+            "number": {
+                "value": 70,
+                "density": { "enable": true, "value_area": 900 }
+            },
+            // Theme-based particle colors
+            "color": { "value": isDark ? "#00e5ff" : "#ff9800" },
+            "shape": { "type": "circle" },
+            "opacity": {
+                "value": 0.6,
+                "random": true,
+                "anim": {
+                    "enable": true,
+                    "speed": 0.5,
+                    "opacity_min": 0.1,
+                    "sync": false
+                }
+            },
+            "size": {
+                "value": 3,
+                "random": true
+            },
+            // Theme-based connection lines
+            "line_linked": {
+                "enable": true,
+                "distance": 120,
+                "color": isDark ? "#00bcd4" : "#ffb74d",
+                "opacity": isDark ? 0.4 : 0.35,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 2,
+                "direction": "none",
+                "random": true,
+                "straight": false,
+                "bounce": false
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": { "enable": true, "mode": "repulse" },
+                "onclick": { "enable": false }
+            },
+            "modes": {
+                "repulse": { "distance": 100, "duration": 0.4 }
+            }
+        },
+        "retina_detect": true
+    });
+}
+
+// ===== Overlay Gradient Update (for Visual Harmony) =====
+function updateOverlayGradient() {
+    const overlay = document.querySelector(".gradient-overlay");
+    if (!overlay) return;
+
+    if (document.body.classList.contains("dark")) {
+        overlay.style.background =
+            "linear-gradient(45deg, rgba(0,150,255,0.25), rgba(0,0,0,0.3), rgba(0,200,255,0.25))";
+    } else {
+        overlay.style.background =
+            "linear-gradient(45deg, rgba(255,140,0,0.25), rgba(255,255,255,0.15), rgba(255,215,64,0.25))";
+    }
+}
+
+// ===== localStorage theme handling =====
+if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
+    document.body.classList.add("dark");
+}
+
+// ===== Re-initialize on Dark Mode Toggle =====
+const darkModeToggle = document.getElementById("darkModeToggle");
+
+// ===== Initialize Dark Mode from Local Storage =====
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+}
+updateOverlayGradient();
+updateToggleIcon();
+
+// ===== Toggle Theme with Icon & Particles Reload =====
+if (darkModeToggle) {
+    darkModeToggle.addEventListener("click", () => {
+        const isDark = document.body.classList.toggle("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        updateOverlayGradient();
+        updateToggleIcon();
+
+        // Reinitialize particles with smooth reload
+        setTimeout(() => {
+            if (window.pJSDom && pJSDom.length) {
+                pJSDom[0].pJS.fn.vendors.destroypJS();
+                document.getElementById("particles-js").innerHTML = "";
+            }
+            initParticles();
+        }, 300);
+    });
+}
+
+// ===== Update Toggle Icon Dynamically =====
+function updateToggleIcon() {
+    if (!darkModeToggle) return;
+
+    if (document.body.classList.contains("dark")) {
+        darkModeToggle.textContent = "☀️"; // Light mode icon
+        darkModeToggle.title = "Switch to light mode";
+        darkModeToggle.style.background = "#00bcd4";
+        darkModeToggle.style.color = "#000";
+    } else {
+        darkModeToggle.textContent = "🌙"; // Dark mode icon
+        darkModeToggle.title = "Switch to dark mode";
+        darkModeToggle.style.background = "#ff9800";
+        darkModeToggle.style.color = "#fff";
+    }
+}
+
 // Hamburger Menu
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("nav-links");
@@ -44,108 +171,5 @@ window.addEventListener("scroll", () => {
 scrollTopBtn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 });
-
-// ===== Particles.js Hero Background (Dynamic for Dark Mode) =====
-function initParticles() {
-    const isDark = document.body.classList.contains("dark");
-
-    particlesJS("particles-js", {
-        "particles": {
-            "number": {
-                "value": 60,
-                "density": { "enable": true, "value_area": 800 }
-            },
-            "color": { "value": isDark ? "#00e5ff" : "#ffffff" },
-            "shape": { "type": "circle" },
-            "opacity": {
-                "value": 0.6,
-                "random": true,
-                "anim": {
-                    "enable": true,
-                    "speed": 0.5,
-                    "opacity_min": 0.1,
-                    "sync": false
-                }
-            },
-            "size": {
-                "value": 3,
-                "random": true,
-                "anim": { "enable": false }
-            },
-            "line_linked": {
-                "enable": true,
-                "distance": 120,
-                "color": isDark ? "#00bcd4" : "#ffffff",
-                "opacity": 0.3,
-                "width": 1
-            },
-            "move": {
-                "enable": true,
-                "speed": 2,
-                "direction": "none",
-                "random": true,
-                "straight": false,
-                "bounce": false,
-                "attract": { "enable": false }
-            }
-        },
-        "interactivity": {
-            "detect_on": "canvas",
-            "events": {
-                "onhover": { "enable": true, "mode": "repulse" },
-                "onclick": { "enable": false }
-            },
-            "modes": {
-                "repulse": { "distance": 100, "duration": 0.4 }
-            }
-        },
-        "retina_detect": true
-    });
-}
-
-// Preserve Dark Mode Preference
-if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-}
-
-// ===== Initialize on Load =====
-document.addEventListener("DOMContentLoaded", () => {
-    initParticles();
-});
-
-// ===== Re-initialize on Dark Mode Toggle =====
-const darkModeToggle = document.getElementById("darkModeToggle");
-
-// Update preference on toggle
-if (darkModeToggle) {
-    darkModeToggle.addEventListener("click", () => {
-        const isDark = document.body.classList.toggle("dark");
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-        updateOverlayGradient();
-
-        setTimeout(() => {
-            if (window.pJSDom && pJSDom.length) {
-                pJSDom[0].pJS.fn.vendors.destroypJS();
-                document.getElementById("particles-js").innerHTML = "";
-            }
-            initParticles();
-        }, 300);
-    });
-}
-
-function updateOverlayGradient() {
-    const overlay = document.querySelector(".gradient-overlay");
-    if (!overlay) return;
-
-    if (document.body.classList.contains("dark")) {
-        overlay.style.background =
-            "linear-gradient(45deg, rgba(33,150,243,0.25), rgba(0,0,0,0.3), rgba(63,81,181,0.3))";
-    } else {
-        overlay.style.background =
-            "linear-gradient(45deg, rgba(255,87,34,0.3), rgba(255,255,255,0.15), rgba(255,152,0,0.25))";
-    }
-}
-
-
 
 
