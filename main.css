@@ -28,71 +28,71 @@ h3 {
    ===== Navbar =====
 =================================================== */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 10px 20px;
-    color: white;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: bold;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+  list-style: none;
+  display: flex;
+  gap: 20px;
 }
 
 .nav-links li a {
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s;
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s;
 }
 
 .nav-links li a:hover,
 .nav-links li a.active {
-    color: #ff6347;
+  color: #ff6347;
 }
 
 /* Hamburger menu */
 .hamburger {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
-    .nav-links {
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: #333;
-        flex-direction: column;
-        width: 200px;
-        display: none;
-        padding: 10px;
-        border-radius: 5px;
-    }
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #333;
+    flex-direction: column;
+    width: 200px;
+    display: none;
+    padding: 10px;
+    border-radius: 5px;
+  }
 
-    .nav-links li {
-        margin: 10px 0;
-    }
+  .nav-links li {
+    margin: 10px 0;
+  }
 
-    .hamburger {
-        display: block;
-    }
+  .hamburger {
+    display: block;
+  }
 
-    .nav-links.active {
-        display: flex;
-    }
+  .nav-links.active {
+    display: flex;
+  }
 }
 
 /* ===================================================
@@ -321,13 +321,13 @@ body.dark #scrollTopBtn:hover {
 =================================================== */
 #darkModeToggle {
   position: fixed;
-  bottom: 20px;
+  bottom: 65px;
   right: 20px;
   width: 55px;
   height: 55px;
   border-radius: 50%;
   border: none;
-  background: #ff9800;
+  background: #000000;
   color: #fff;
   font-size: 22px;
   cursor: pointer;
@@ -336,9 +336,21 @@ body.dark #scrollTopBtn:hover {
   z-index: 1000;
 }
 
+/* Hover effect */
 #darkModeToggle:hover {
-  background: #e68900;
   transform: rotate(20deg) scale(1.1);
+}
+
+/* Dark mode appearance */
+body.dark #darkModeToggle {
+  background: #00bcd4;
+  /* Cyan glow in dark mode */
+  color: #000;
+  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.4);
+}
+
+body.dark #darkModeToggle:hover {
+  background: #00acc1;
 }
 
 /* Tooltip */
@@ -379,7 +391,7 @@ body.dark #scrollTopBtn:hover {
 /* ===== Scroll to Top Button ===== */
 #scrollTopBtn {
   position: fixed;
-  bottom: 20px;
+  bottom: 65px;
   left: 20px;
   z-index: 2000;
   width: 50px;
