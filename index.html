@@ -19,7 +19,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="main.css">
-  <link rel="stylesheet" href="main-service.css">
+  <link rel="stylesheet" href="mini-services.css">
   <link rel="stylesheet" href="whatsapp-floating.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -38,16 +38,16 @@
 <body>
   <!-- Header / Navbar -->
   <nav class="navbar">
-    <div class="logo">VIMAL TECH</div>
+    <div class="logo">Vimal Tech</div>
 
     <ul class="nav-links" id="nav-links">
       <li><a href="#hero" class="active">Home</a></li>
-      <li><a href="#tech-stack">Tech Stack</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#tech-stack">Tech Stack</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="services.html">Services</a></li> <!-- New Services link -->
+      <li><a href="services.html" target="_blank"">Services</a></li> <!-- New Services link -->
     </ul>
     <!-- hamburger icon -->
     <div style="display: flex; align-items: center;">
@@ -70,23 +70,21 @@
     <p>
       I am a Java Developer with hands-on experience in building backend systems, REST APIs, and enterprise
       applications.
-      Skilled in <strong>Java, Spring Boot, Hibernate, SQL</strong>, and <strong>Cloud Technologies</strong>.
+      Skilled in <strong>Java, Spring Boot, Hibernate, Spring Framework, SQL, NoSQL</strong>, and <strong>Cloud Technologies</strong>.
       Passionate about writing clean, maintainable, and efficient code.
     </p>
   </section>
 
   <!-- Tech Stack Section -->
-  <section id="tech-stack" class="container fade-in">
+  <section id="tech-stack" class="container fade-in tech-stack">
     <h2>Tech Stack Dashboard</h2>
-    <p>
-      <a href="https://vimal-java-dev.github.io/" target="_blank">Tap to open page</a>
-    </p>
+      <a href="https://vimal-java-dev.github.io/" target="_blank" class="btn">Tap to read Overview</a>
   </section>
 
   <!-- Mini Services Preview Section -->
   <section id="services-preview" class="container fade-in">
-    <h2>Services I Offer</h2>
-    <p>Explore professional services to help build and scale your projects:</p>
+    <h2>Services I Offer I Preview</h2>
+    <p>Explore professional services to help build and scale your projects:</p><br>
 
     <div class="services-grid">
       <div class="service-card">
@@ -102,7 +100,7 @@
       <div class="service-card">
         <i class="fas fa-database"></i>
         <h3>Database Management</h3>
-        <p>Manage relational and NoSQL databases like MySQL, PostgreSQL, MongoDB.</p>
+        <p>Manage relational and NoSQL databases like Oracle, MySQL, PostgreSQL, MongoDB, Cassandra.</p>
       </div>
       <div class="service-card">
         <i class="fas fa-project-diagram"></i>
@@ -111,12 +109,9 @@
       </div>
     </div>
 
-    <div class="cta-section" style="margin-top:20px; text-align:center;">
-      <a href="services.html" class="btn">View All Services</a>
-      <p style="margin-top:10px;">
-        Check my live project:
-        <a href="https://alexfoodcorner.netlify.app/" target="_blank">Alex Food Corner</a>
-      </p>
+    <div class="services-preview" style="margin-top:20px">
+      <a href="services.html" target="_blank" class="btn">View All Services</a><br/><br/>
+      <a href="https://alexfoodcorner.netlify.app/" target="_blank" class="btn">Alex Food Corner Live Project</a>
     </div>
   </section>
 
@@ -204,20 +199,36 @@
     <h2>Projects</h2>
     <div class="projects-grid">
       <div class="project-card">
+        <h3>PTC Windchill (Java Product)</h3>
+        <p>Customized Java Client for PTC Windchill PDMLink as Shadow Resource.</p>
+      </div>
+      <div class="project-card">
+        <h3>Parking System (POC)</h3>
+        <p>Rest API, Microservices, Docker + Swagger-UI, Postman.</p>
+      </div>
+      <div class="project-card">
         <h3>Data Streaming App (POC)</h3>
-        <p>Spring Boot + Kafka + Spark + Docker for real-time data processing.</p>
+        <p>Spring Boot + Kafka + Spark + Docker for Real-Time Data Processing.</p>
       </div>
       <div class="project-card">
-        <h3>Library Management System</h3>
-        <p>Spring Boot & MySQL app to manage books, members, and loans.</p>
+        <h3>Health Care Center Management</h3>
+        <p>Core Java, Spring Framework and Hibernate + JSP + Oracle</p>
       </div>
       <div class="project-card">
-        <h3>E-commerce Backend</h3>
-        <p>REST API backend with Java, Spring Boot, and Hibernate.</p>
+        <h3>Consultant Return On Investment</h3>
+        <p>Core Java, JDBC, DAO Design Pattern, Struts 2.0-Framework. + Oracle</p>
+      </div>
+      <div class="project-card">
+        <h3>E-commerce Backend Best Practices</h3>
+        <p>REST API backend with Java, Spring Boot, and Hibernate + Maven, MySQL</p>
       </div>
       <div class="project-card">
         <h3>Chat Application</h3>
-        <p>Real-time chat with Java WebSocket & Spring Boot.</p>
+        <p>Real-Time Chat with Java WebSocket & Spring Boot.</p>
+      </div>
+      <div class="project-card">
+        <h3>Desktop Chat Application (Local Area Network)</h3>
+        <p>Java Remote Method Invocation + Stubs + Skeletons, Swing Framework.</p>
       </div>
     </div>
   </section>
