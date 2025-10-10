@@ -52,7 +52,8 @@ jobs:
       # ---------- Import GPG Public Key ----------
       - name: Import trusted GPG public key
         env:
-          GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }}
+          GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }} 
+          GPG_PUBLIC_KEY_1: ${{ secrets.GPG_PUBLIC_KEY_1 }} # Public key from Machine HP
         run: |
           if [ -z "$GPG_PUBLIC_KEY" ]; then
             echo "❌ ERROR: GPG_PUBLIC_KEY secret is missing!"
