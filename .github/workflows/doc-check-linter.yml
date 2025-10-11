@@ -51,32 +51,49 @@ jobs:
 
       # ---------- Import GPG Public Key ----------
       - name: Import trusted GPG public key
+        # Run only if this is NOT a forked PR
+        if: ${{ github.event.pull_request.head.repo.full_name == github.repository || github.event_name != 'pull_request' }}
         env:
-          GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }} 
+          GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }}
           GPG_PUBLIC_KEY_1: ${{ secrets.GPG_PUBLIC_KEY_1 }} # Public key from Machine HP
         run: |
           # Check for primary GPG key
           if [ -z "$GPG_PUBLIC_KEY" ] && [ -z "$GPG_PUBLIC_KEY_1" ]; then
-            echo "❌ ERROR: GPG_PUBLIC_KEY and/or GPG_PUBLIC_KEY_1 secrets are missing!"
-            echo "Please add your exported public keys in GitHub repo settings → Secrets → Actions → GPG_PUBLIC_KEY and GPG_PUBLIC_KEY_1"
-            exit 1
+            echo "⚠️ Skipping GPG import: No secrets available (forked PR or missing keys)."
+            exit 0
           fi
 
-          # Import first GPG key if available
-          if [ -n "$GPG_PUBLIC_KEY" ]; then
-            echo "$GPG_PUBLIC_KEY" | gpg --import
-            echo "✅ Imported GPG_PUBLIC_KEY successfully."
-          fi
+          # Function to import and trust a GPG key
+          import_key() {
+            local key="$1"
+            local varname="$2"
+            if [ -n "$key" ]; then
+              echo "$key" | gpg --import
+              echo "✅ Imported $varname successfully."
 
-          # Import second GPG key if available
-          if [ -n "$GPG_PUBLIC_KEY_1" ]; then
-            echo "$GPG_PUBLIC_KEY_1" | gpg --import
-            echo "✅ Imported GPG_PUBLIC_KEY_1 successfully."
-          fi
+              # Extract fingerprint
+              fingerprint=$(echo "$key" | gpg --with-colons --import-options show-only --import 2>/dev/null \
+                            | awk -F: '$1=="fpr"{print $10; exit}')
+              if [ -n "$fingerprint" ]; then
+                # Set ultimate trust
+                echo "$fingerprint:6:" | gpg --import-ownertrust
+                echo "🔐 Set $varname (fingerprint $fingerprint) to ultimate trust."
+              else
+                echo "⚠️ Could not determine fingerprint for $varname."
+              fi
+            fi
+          }
+
+          # Import both keys
+          import_key "$GPG_PUBLIC_KEY" "GPG_PUBLIC_KEY"
+          import_key "$GPG_PUBLIC_KEY_1" "GPG_PUBLIC_KEY_1"
 
           echo "🎉 All available GPG public keys imported successfully."
+
       # ---------- Verify latest commit signature ----------
       - name: Verify latest commit signature
+        # Skip verification if forked PR (same condition for consistency)
+        if: ${{ github.event.pull_request.head.repo.full_name == github.repository || github.event_name != 'pull_request' }}
         run: |
           # Only check the latest commit
           LATEST_COMMIT=$(git rev-parse HEAD)
@@ -100,3 +117,9 @@ jobs:
 
           echo "❌ Commit is not GPG signed with a trusted key!"
           exit 1
+
+      # ---------- Optional status for skipped forked PRs ----------
+      - name: Skip GPG checks for external PRs
+        if: ${{ github.event.pull_request.head.repo.full_name != github.repository && github.event_name == 'pull_request' }}
+        run: echo "🟡 Skipping GPG verification for external PR (no access to secrets)."
+
