@@ -6,9 +6,20 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #fff;
+    color: #000000;
     overflow: hidden;
     background: radial-gradient(circle at top right, #ff8c00, #ff5722);
+}
+
+body.dark .hero-services {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    /* overflow: hidden; */
+    background: radial-gradient(circle at top right, #805922, #8d4630);
 }
 
 /* Particles.js Canvas */
@@ -165,6 +176,33 @@ body.dark canvas {
 
 .service-card:hover h3 {
     color: #d2691e;
+}
+
+/* ===================================================
+   ===== Dark Mode =====
+=================================================== */
+body.dark {
+  background: #181818;
+  color: #e0e0e0;
+}
+
+body.dark .service-card{
+  background: #181818;
+  color: #e0e0e0;
+}
+
+body.dark .service-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(145deg, #ffecb3, #ffe0b2);
+}
+
+body.dark .service-card p {
+    transition: color 0.3s ease;
+}
+
+body.dark .service-card:hover p {
+    color: #000000;
 }
 
 /* CTA Section */
