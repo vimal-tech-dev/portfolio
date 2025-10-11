@@ -1,0 +1,72 @@
+/* Services Preview Animations */
+#services-preview .service-card {
+  background: #f5f5f5;
+  padding: 25px 15px;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+
+#services-preview .service-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  background: #fff3e0; /* Slight highlight color */
+}
+
+#services-preview .service-card i {
+  font-size: 2.5rem;
+  color: sandybrown;
+  margin-bottom: 12px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#services-preview .service-card:hover i {
+  transform: rotate(10deg) scale(1.1);
+  color: #ff8c42; /* Slight color change on hover */
+}
+
+#services-preview .service-card h3 {
+  transition: color 0.3s ease;
+}
+
+#services-preview .service-card:hover h3 {
+  color: #d2691e; /* Darker highlight on hover */
+}
+
+/* ============== */
+/* Services Preview Animations */
+#services-preview .service-card {
+  background: #f5f5f5;
+  padding: 25px 15px;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+
+#services-preview .service-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  background: #fff3e0; /* Slight highlight color */
+}
+
+#services-preview .service-card i {
+  font-size: 2.5rem;
+  color: sandybrown;
+  margin-bottom: 12px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#services-preview .service-card:hover i {
+  transform: rotate(10deg) scale(1.1);
+  color: #ff8c42; /* Slight color change on hover */
+}
+
+#services-preview .service-card h3 {
+  transition: color 0.3s ease;
+}
+
+#services-preview .service-card:hover h3 {
+  color: #d2691e; /* Darker highlight on hover */
+}
