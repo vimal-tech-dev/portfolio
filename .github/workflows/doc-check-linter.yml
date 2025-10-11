@@ -55,15 +55,26 @@ jobs:
           GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }} 
           GPG_PUBLIC_KEY_1: ${{ secrets.GPG_PUBLIC_KEY_1 }} # Public key from Machine HP
         run: |
-          if [ -z "$GPG_PUBLIC_KEY" ]; then
-            echo "❌ ERROR: GPG_PUBLIC_KEY secret is missing!"
-            echo "Please add your exported public keys in GitHub repo settings → Secrets → Actions → GPG_PUBLIC_KEY"
+          # Check for primary GPG key
+          if [ -z "$GPG_PUBLIC_KEY" ] && [ -z "$GPG_PUBLIC_KEY_1" ]; then
+            echo "❌ ERROR: GPG_PUBLIC_KEY and/or GPG_PUBLIC_KEY_1 secrets are missing!"
+            echo "Please add your exported public keys in GitHub repo settings → Secrets → Actions → GPG_PUBLIC_KEY and GPG_PUBLIC_KEY_1"
             exit 1
           fi
 
-          echo "$GPG_PUBLIC_KEY" | gpg --import
-          echo "✅ Trusted public GPG keys imported successfully."
+          # Import first GPG key if available
+          if [ -n "$GPG_PUBLIC_KEY" ]; then
+            echo "$GPG_PUBLIC_KEY" | gpg --import
+            echo "✅ Imported GPG_PUBLIC_KEY successfully."
+          fi
 
+          # Import second GPG key if available
+          if [ -n "$GPG_PUBLIC_KEY_1" ]; then
+            echo "$GPG_PUBLIC_KEY_1" | gpg --import
+            echo "✅ Imported GPG_PUBLIC_KEY_1 successfully."
+          fi
+
+          echo "🎉 All available GPG public keys imported successfully."
       # ---------- Verify latest commit signature ----------
       - name: Verify latest commit signature
         run: |
