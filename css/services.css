@@ -182,13 +182,13 @@ body.dark canvas {
    ===== Dark Mode =====
 =================================================== */
 body.dark {
-  background: #181818;
-  color: #e0e0e0;
+    background: #181818;
+    color: #e0e0e0;
 }
 
-body.dark .service-card{
-  background: #181818;
-  color: #e0e0e0;
+body.dark .service-card {
+    background: #181818;
+    color: #e0e0e0;
 }
 
 body.dark .service-card:hover {
@@ -248,4 +248,20 @@ body.dark .service-card:hover p {
     50% {
         transform: translateY(-5px);
     }
+}
+
+/* Services Offer Section */
+#services-offer {
+    text-align: center;
+    background-color: #ced4da;
+}
+
+/* Live Projects Section */
+#live-projects {
+    text-align: center;
+}
+
+body.dark #services-offer {
+    background-color: #467db4;
+    color: #000;
 }

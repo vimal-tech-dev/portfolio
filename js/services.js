@@ -120,56 +120,8 @@ function updateToggleIcon() {
     } else {
         darkModeToggle.textContent = "🌙"; // Dark mode icon
         darkModeToggle.title = "Switch to dark mode";
-        darkModeToggle.style.background = "#ff9800";
+        darkModeToggle.style.background = "#000000";
         darkModeToggle.style.color = "#fff";
     }
 }
-
-// Hamburger Menu
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("nav-links");
-
-if (hamburger && navLinks) {
-    hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-    });
-}
-
-// Scroll Fade-in Animation with staggered delay
-document.addEventListener("DOMContentLoaded", function () {
-    const faders = document.querySelectorAll(".fade-in");
-
-    const appearOptions = {
-        threshold: 0.2,
-        rootMargin: "0px 0px -50px 0px",
-    };
-
-    const appearOnScroll = new IntersectionObserver(function (entries, observer) {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-        });
-    }, appearOptions);
-
-    faders.forEach(fader => {
-        appearOnScroll.observe(fader);
-    });
-});
-
-/* ===== Scroll-to-Top Button ===== */
-const scrollTopBtn = document.getElementById("scrollTopBtn");
-
-window.addEventListener("scroll", () => {
-    if (document.documentElement.scrollTop > 150) {
-        scrollTopBtn.classList.add("show");
-    } else {
-        scrollTopBtn.classList.remove("show");
-    }
-});
-
-scrollTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
 

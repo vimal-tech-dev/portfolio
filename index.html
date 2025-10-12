@@ -10,13 +10,15 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="main.css">
-  <link rel="stylesheet" href="mini-services.css">
-  <link rel="stylesheet" href="whatsapp-floating.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/mini-services.css">
+  <link rel="stylesheet" href="/css/whatsapp-floating.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script> -->
 </head>
+
 <style>
   a {
     color: sandybrown;
@@ -36,10 +38,10 @@
       <li><a href="#hero" class="active">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#tech-stack">Tech Stack</a></li>
+      <li><a href="services.html">Services</a></li> <!-- New Services link -->
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="services.html" target="_blank"">Services</a></li> <!-- New Services link -->
     </ul>
     <!-- hamburger icon -->
     <div style="display: flex; align-items: center;">
@@ -62,7 +64,8 @@
     <p>
       I am a Java Developer with hands-on experience in building backend systems, REST APIs, and enterprise
       applications.
-      Skilled in <strong>Java, Spring Boot, Hibernate, Spring Framework, SQL, NoSQL</strong>, and <strong>Cloud Technologies</strong>.
+      Skilled in <strong>Java, Spring Boot, Hibernate, Spring Framework, SQL, NoSQL</strong>, and <strong>Cloud
+        Technologies</strong>.
       Passionate about writing clean, maintainable, and efficient code.
     </p>
   </section>
@@ -70,7 +73,7 @@
   <!-- Tech Stack Section -->
   <section id="tech-stack" class="container fade-in tech-stack">
     <h2>Tech Stack Dashboard</h2>
-      <a href="https://vimal-java-dev.github.io/" target="_blank" class="btn">Tap to read Overview</a>
+    <a href="https://vimal-java-dev.github.io/" target="_blank" class="btn">Tap to read Overview</a>
   </section>
 
   <!-- Mini Services Preview Section -->
@@ -102,7 +105,7 @@
     </div>
 
     <div class="services-preview" style="margin-top:20px">
-      <a href="services.html" target="_blank" class="btn">View All Services</a><br/><br/>
+      <a href="services.html" target="_blank" class="btn">View All Services</a><br /><br />
       <a href="https://alexfoodcorner.netlify.app/" target="_blank" class="btn">Alex Food Corner Live Project</a>
     </div>
   </section>
@@ -174,7 +177,7 @@
       <div class="skill-card"><a href="https://vimal-java-dev.github.io/#links" target="_blank">
           <i class="fab fa-github"></i><br>GitHub</a></div>
     </div>
-  </section>
+  </section><br />
 
   <!-- Projects Section -->
   <section id="projects" class="container fade-in">
@@ -213,7 +216,7 @@
         <p>Java Remote Method Invocation + Stubs + Skeletons, Swing Framework.</p>
       </div>
     </div>
-  </section>
+  </section><br />
 
   <!-- Contact Section -->
   <section id="contact" class="container fade-in">
@@ -239,7 +242,7 @@
 
   <!-- Dark Mode Toggle -->
   <button id="darkModeToggle" class="tooltip">🌙
-    <!-- <span class="tooltiptext" id="toggleTooltip">Switch to dark mode</span> -->
+    <span class="tooltiptext" id="toggleTooltip">Switch to dark mode</span>
   </button>
 
   <!-- Scroll to Top Button -->
@@ -247,7 +250,9 @@
     <i class="fas fa-arrow-up"></i>
   </button>
 
-  <script src="script.js"></script>
+  <!-- JS -->
+  <script src="/js/common.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 
 </html>
