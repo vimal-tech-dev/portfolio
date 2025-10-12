@@ -10,14 +10,24 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <!-- CSS -->
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="services.css">
-    <link rel="stylesheet" href="whatsapp-floating.css">
+    <link rel="stylesheet" href="/css/services.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/whatsapp-floating.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Particles.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
+
+<style>
+    a {
+        color: sandybrown;
+    }
+
+    a:hover {
+        color: blue;
+    }
+</style>
 
 <body>
 <<<<<<< HEAD
@@ -33,8 +43,9 @@
         <ul class="nav-links" id="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="services.html" class="active">Services</a></li>
-            <li><a href="index.html#projects">Projects</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="#services-offer">Offer Services</a></li>
+            <li><a href="#live-projects">Live Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
         <!-- hamburger icon -->
         <div style="display: flex; align-items: center;">
@@ -54,7 +65,7 @@
     </section>
 
     <!-- Services Section -->
-    <section class="container" style="text-align: center;">
+    <section id="services-offer" class="container">
         <h2 class="section-title fade-in">Services We Offer</h2>
         <p class="fade-in">Explore our expertise to scale your projects efficiently:</p>
 
@@ -90,15 +101,33 @@
                 <p>Secure, optimized, and maintainable solutions following best practices.</p>
             </div>
         </div>
+    </section><br />
 
+    <!-- Live Projects Section -->
+    <section id="live-projects">
+        <h2>Live Projects</h2>
         <div class="cta-section fade-in" style="--delay:0.6s; margin-bottom: 60px;">
             <a href="https://alexfoodcorner.netlify.app/" target="_blank" class="btn">Alex Food Corner Live Project</a>
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="container fade-in">
+        <h2>Contact Me</h2>
+        <p>If you’d like to collaborate, feel free to reach out:</p>
+        <div class="contact-links">
+            <a href="tel:+919638474047"><i class="fas fa-phone"></i> Call</a>
+            <a href="mailto:vimal.patel@vimaltech.dev"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://www.linkedin.com/in/vimaltech-dev/" target="_blank"><i class="fab fa-linkedin"></i>
+                LinkedIn</a>
+        </div>
+    </section>
+
     <!-- Floating WhatsApp -->
     <a href="https://wa.me/919638474047?text=Hello%20Vimal%2C%0AI%20would%20like%20to%20know%20more%20about%20your%20tech%20services."
-        class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <footer>
         <p>&copy; 2025 Vimal Patel | Java Developer Portfolio</p>
@@ -112,7 +141,8 @@
     </button>
 
     <!-- JS -->
-    <script src="services.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/services.js"></script>
 </body>
 
 </html>

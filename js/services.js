@@ -124,11 +124,12 @@ function updateToggleIcon() {
     } else {
         darkModeToggle.textContent = "🌙"; // Dark mode icon
         darkModeToggle.title = "Switch to dark mode";
-        darkModeToggle.style.background = "#ff9800";
+        darkModeToggle.style.background = "#000000";
         darkModeToggle.style.color = "#fff";
     }
 }
 
+<<<<<<< HEAD:services.js
 <<<<<<< HEAD
 =======
 >>>>>>> 1ffaec2 (Favicon added & services created)
@@ -291,3 +292,5 @@ function updateOverlayGradient() {
 =======
 >>>>>>> 5ce3cde (Icon pisition)
 
+=======
+>>>>>>> a6b9b59 (Design added index + services page):js/services.js
