@@ -213,3 +213,82 @@ body.dark #darkModeToggle {
 body.dark #darkModeToggle:hover {
   background: #3ce8ff;
 }
+
+/* Wrapper for centering counter horizontally */
+.counter-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 40px;
+}
+
+/* Elegant visitor counter */
+.visitor-count {
+  display: inline-block;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.25),
+      rgba(255, 255, 255, 0.35));
+  /* frosted glass + subtle gradient */
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 12px 24px;
+  /* slightly larger for elegance */
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 87, 34, 0.1);
+  /* glow */
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto;
+}
+
+/* Hover effect for interactivity */
+.visitor-count:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25), 0 0 30px rgba(255, 87, 34, 0.2);
+  /* stronger glow on hover */
+}
+
+/* Animate the number pop */
+#visitorCount {
+  display: inline-block;
+  font-weight: bold;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+@keyframes popNumber {
+  0% {
+    transform: scale(1);
+    color: #333;
+  }
+
+  50% {
+    transform: scale(1.3);
+    color: #ff5722;
+  }
+
+  /* accent color during pop */
+  100% {
+    transform: scale(1);
+    color: #333;
+  }
+}
+
+#visitorCount.animate-pop {
+  animation: popNumber 0.4s ease;
+}
+
+.visitor-count-card {
+  background: rgba(179, 105, 105, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .visitor-count-card {
+  background-color: #467db4;
+  color: #000;
+}
