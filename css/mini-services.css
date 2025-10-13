@@ -12,7 +12,8 @@
 #services-preview .service-card:hover {
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  background: #fff3e0; /* Slight highlight color */
+  background: #fff3e0;
+  /* Slight highlight color */
 }
 
 #services-preview .service-card i {
@@ -24,7 +25,8 @@
 
 #services-preview .service-card:hover i {
   transform: rotate(10deg) scale(1.1);
-  color: #ff8c42; /* Slight color change on hover */
+  color: #ff8c42;
+  /* Slight color change on hover */
 }
 
 #services-preview .service-card h3 {
@@ -32,13 +34,14 @@
 }
 
 #services-preview .service-card:hover h3 {
-  color: #d2691e; /* Darker highlight on hover */
+  color: #d2691e;
+  /* Darker highlight on hover */
 }
 
 /* ===================================================
    ===== Mini Services Preview Section =====
 =================================================== */
-#services-preview{
+#services-preview {
   text-align: center;
 }
 
@@ -66,7 +69,7 @@ body.dark {
   color: #e0e0e0;
 }
 
-body.dark #services-preview .service-card { 
+body.dark #services-preview .service-card {
   background: #242424;
   color: #e0e0e0;
 }
@@ -74,7 +77,8 @@ body.dark #services-preview .service-card {
 body.dark #services-preview .service-card:hover {
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  background: #fff3e0; /* Slight highlight color */
+  background: #fff3e0;
+  /* Slight highlight color */
 }
 
 body.dark #services-preview .service-card p {
@@ -82,5 +86,6 @@ body.dark #services-preview .service-card p {
 }
 
 body.dark .service-card:hover p {
-  color: #000000; /* Darker highlight on hover */
+  color: #000000;
+  /* Darker highlight on hover */
 }

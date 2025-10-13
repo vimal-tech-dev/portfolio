@@ -32,15 +32,22 @@
 <body>
   <!-- Header / Navbar -->
   <nav class="navbar">
-    <div class="logo">Vimal Tech</div>
+    <div>
+      <a href="index.html" class="brand">
+        <img src="/images/logo.jpeg" alt="Brand Logo" class="logo">
+        <span class="brand-name">Vimal Tech</span>
+      </a>
+    </div>
 
     <ul class="nav-links" id="nav-links">
       <li><a href="#hero" class="active">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#tech-stack">Tech Stack</a></li>
-      <li><a href="services.html">Services</a></li> <!-- New Services link -->
+      <li><a href="#services-preview">Services-Preview</a></li>
+      <li><a href="#visitor-counter">Visitor-Counter</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="services.html">Services</a></li> <!-- New Services link -->
       <li><a href="#contact">Contact</a></li>
     </ul>
     <!-- hamburger icon -->
@@ -104,9 +111,21 @@
       </div>
     </div>
 
-    <div class="services-preview" style="margin-top:20px">
+    <div class="services-preview" style="margin-top:20px; margin-bottom:10px">
       <a href="services.html" target="_blank" class="btn">View All Services</a><br /><br />
       <a href="https://alexfoodcorner.netlify.app/" target="_blank" class="btn">Alex Food Corner Live Project</a>
+    </div>
+  </section>
+
+  <!-- Visitor Counter Section -->
+  <section id="visitor-counter" class="container fade-in counter-container">
+    <div class="visitor-count-card">
+      <div class="visitor-count">
+        <h2 style="color: #222">Visitor Counter</h2>
+        <h3 style="color: #604848">
+          👋 Total Visitors: <span id="visitorCount">Loading...</span>
+        </h3>
+      </div>
     </div>
   </section>
 
@@ -214,18 +233,6 @@
       <div class="project-card">
         <h3>Desktop Chat Application (Local Area Network)</h3>
         <p>Java Remote Method Invocation + Stubs + Skeletons, Swing Framework.</p>
-      </div>
-    </div>
-  </section><br />
-
-  <!-- Visitor Counter Section -->
-  <section class="container fade-in counter-container">
-    <div class="visitor-count-card">
-      <div class="visitor-count">
-        <h2 style="color: #222">Visitor Counter</h2>
-        <h3 style="color: #604848">
-          👋 Total Visitors: <span id="visitorCount">Loading...</span>
-        </h3>
       </div>
     </div>
   </section><br />
