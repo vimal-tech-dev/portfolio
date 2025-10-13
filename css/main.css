@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #fff;
+  color: rgb(201, 238, 99);
   position: relative;
 }
 
@@ -164,7 +164,7 @@ body.dark header.navbar {
 }
 
 body.dark nav ul li a {
-  color: #e0e0e0;
+  color: rgb(201, 238, 99);
 }
 
 body.dark nav ul li a:hover {
@@ -219,7 +219,7 @@ body.dark #darkModeToggle:hover {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 40px;
+  /* margin-top: 10px; */
 }
 
 /* Elegant visitor counter */
@@ -240,7 +240,7 @@ body.dark #darkModeToggle:hover {
   /* glow */
   backdrop-filter: blur(12px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 /* Hover effect for interactivity */
