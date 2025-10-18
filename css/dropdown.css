@@ -1,0 +1,125 @@
+/* ===== Dropdown Base ===== */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+    display: inline-block;
+}
+
+/* Dropdown menu hidden by default */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    border-radius: 6px;
+    padding: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+/* Dropdown menu links */
+.dropdown-menu li {
+    list-style: none;
+}
+
+.dropdown-menu a {
+    display: block;
+    color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #444;
+}
+
+/* Arrow indicator (base) */
+.dropdown-toggle::after {
+    content: "▾";
+    display: inline-block;
+    margin-left: 6px;
+    transition: transform 0.3s ease;
+}
+
+/* Rotate arrow upward when open */
+.dropdown.open .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+/* ===== Desktop Hover Dropdown ===== */
+@media (min-width: 769px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        background: #333;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        z-index: 100;
+    }
+}
+
+/* ===== Mobile Dropdown and Hamburger ===== */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+        font-size: 28px;
+        cursor: pointer;
+    }
+
+    .dropdown-menu {
+        position: static;
+        /* Prevents overlap */
+        background: #333;
+        padding-left: 16px;
+        border-radius: 5px;
+        width: 100%;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease;
+    }
+
+    .dropdown.open .dropdown-menu {
+        max-height: 500px;
+        /* Adjust as needed */
+    }
+
+    .dropdown-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .dropdown-toggle::after {
+        content: "▾";
+        margin-left: 8px;
+        transition: transform 0.3s;
+    }
+
+    .dropdown.open .dropdown-toggle::after {
+        transform: rotate(180deg);
+    }
+
+    .dropdown-menu li a {
+        display: block;
+        padding: 8px 0;
+    }
+}

@@ -1,0 +1,282 @@
+/* ===================================================
+   ===== Global Styles =====
+=================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* ✅ smooth scroll */
+}
+
+body {
+    background: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    transition: background-color 0.6s ease, color 0.6s ease;
+    scroll-behavior: smooth;
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Section */
+section {
+    border-radius: 12px;
+}
+
+/* ===================================================
+   ===== Navbar =====
+=================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #7a7878;
+    padding: 10px 20px;
+    color: rgb(201, 238, 99);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Brand container (logo + name) */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* space between logo and text */
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: rgb(201, 238, 99);
+    text-decoration: none;
+}
+
+/* Logo image */
+.logo {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+    border-radius: 6px;
+    /* optional for a softer look */
+}
+
+/* .logo {
+    font-size: 20px;
+    font-weight: bold;
+} */
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: rgb(201, 238, 99);
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+    color: #ff6347;
+}
+
+/* Hamburger menu */
+.hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.3s ease;
+}
+
+.hamburger.active {
+    transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #333;
+        flex-direction: column;
+        width: 200px;
+        display: none;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+/* ===================================================
+   ===== Containers & Animations =====
+=================================================== */
+.container {
+    width: 85%;
+    margin: auto;
+    padding: 1rem 0;
+}
+
+/* Fade-in animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===================================================
+   ===== Footer =====
+=================================================== */
+footer {
+    text-align: center;
+    padding: 1.2rem;
+    background: #222;
+    color: #fff;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+/* ===================================================
+   ===== Contact Section =====
+=================================================== */
+#contact {
+    text-align: center;
+    background-color: #929599;
+}
+
+body.dark #contact {
+    background-color: #467db4;
+    color: #000;
+}
+
+.contact-links a {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 20px;
+    background: #ff9800;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.contact-links a:hover {
+    background: #e68900;
+    transform: translateY(-3px);
+}
+
+/* ===================================================
+   ===== Floating Dark Mode Toggle =====
+=================================================== */
+#darkModeToggle {
+    position: fixed;
+    bottom: 65px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: none;
+    background: #000000;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s, transform 0.3s;
+    z-index: 1000;
+}
+
+/* Hover effect */
+#darkModeToggle:hover {
+    transform: rotate(20deg) scale(1.1);
+}
+
+/* ===== Scroll to Top Button ===== */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 65px;
+    left: 20px;
+    z-index: 2000;
+    width: 50px;
+    height: 50px;
+    border: none;
+    outline: none;
+    background-color: #ff9800;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.5);
+    transition: opacity 0.4s, transform 0.3s, background 0.3s, box-shadow 0.3s;
+    opacity: 0;
+    pointer-events: none;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* Show when scrolling (with pulse glow) */
+#scrollTopBtn.show {
+    opacity: 1;
+    pointer-events: auto;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* Stop pulse on hover and add stronger glow */
+#scrollTopBtn:hover {
+    background-color: #e68900;
+    transform: scale(1.1);
+    animation: none;
+    /* stop pulsing */
+    box-shadow: 0 0 18px rgba(255, 152, 0, 0.8);
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 8px rgba(255, 152, 0, 0.4);
+    }
+
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 16px rgba(255, 152, 0, 0.6);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 8px rgba(255, 152, 0, 0.4);
+    }
+}
