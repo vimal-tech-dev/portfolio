@@ -67,30 +67,6 @@
 }
 
 /* ===================================================
-   ===== Teck Stack Section =====
-=================================================== */
-#tech-stack {
-  text-align: center;
-  /* height: 20vh; */
-}
-
-.tech-stack .btn {
-  display: inline-block;
-  padding: 12px 25px;
-  border-radius: 30px;
-  background: #ff9800;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s, transform 0.3s;
-}
-
-.tech-stack .btn:hover {
-  background: #e68900;
-  transform: translateY(-3px);
-}
-
-/* ===================================================
    ===== Skills Section =====
 =================================================== */
 #skills {
@@ -149,6 +125,44 @@
 .project-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ===================================================
+   ===== Teck Stack Section =====
+=================================================== */
+#portfolio {
+  text-align: center;
+  /* height: 20vh; */
+}
+
+.portfolio .btn {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 30px;
+  background: #ff9800;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.portfolio .btn:hover {
+  background: #e68900;
+  transform: translateY(-3px);
+}
+
+.portfolio-card {
+  background: rgba(179, 105, 105, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .portfolio-card {
+  background-color: #467db4;
+  color: #000;
 }
 
 /* ===================================================
@@ -245,7 +259,7 @@ body.dark #darkModeToggle:hover {
 
 /* Hover effect for interactivity */
 .visitor-count:hover {
-  transform: translateY(-3px);
+  transform: translateY(-10px);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25), 0 0 30px rgba(255, 87, 34, 0.2);
   /* stronger glow on hover */
 }
