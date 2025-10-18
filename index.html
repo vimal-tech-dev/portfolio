@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <title>Vimal Tech - Portfolio</title>
 =======
   <title>Java Developer Portfolio</title>
@@ -13,6 +14,9 @@
 =======
   <title>Vimal Tech - Portfolio</title>
 >>>>>>> 5ce3cde (Icon pisition)
+=======
+  <title>Vimal Tech</title>
+>>>>>>> 38b90a3 (Dropdown added at navbar)
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -20,6 +24,7 @@
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/dropdown.css">
   <link rel="stylesheet" href="/css/mini-services.css">
   <link rel="stylesheet" href="/css/whatsapp-floating.css">
   <!-- Font Awesome -->
@@ -50,11 +55,19 @@
     <ul class="nav-links" id="nav-links">
       <li><a href="#hero" class="active">Home</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#tech-stack">Tech Stack</a></li>
-      <li><a href="#services-preview">Services-Preview</a></li>
-      <li><a href="#visitor-counter">Visitor-Counter</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
+      <li><a href="#services-preview">Offering</a></li>
+      <!-- <li><a href="#visitor-counter">Visitor-Counter</a></li> -->
+
+      <!-- Dropdown Section -->
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle">Expertise</a>
+        <ul class="dropdown-menu">
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+        </ul>
+      </li>
+
       <li><a href="services.html">Services</a></li> <!-- New Services link -->
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -83,12 +96,6 @@
         Technologies</strong>.
       Passionate about writing clean, maintainable, and efficient code.
     </p>
-  </section>
-
-  <!-- Tech Stack Section -->
-  <section id="tech-stack" class="container fade-in tech-stack">
-    <h2>Tech Stack Dashboard</h2>
-    <a href="https://vimal-java-dev.github.io/" target="_blank" class="btn">Tap to read Overview</a>
   </section>
 
   <!-- Mini Services Preview Section -->
@@ -121,7 +128,6 @@
 
     <div class="services-preview" style="margin-top:20px; margin-bottom:10px">
       <a href="services.html" target="_blank" class="btn">View All Services</a><br /><br />
-      <a href="https://alexfoodcorner.netlify.app/" target="_blank" class="btn">Alex Food Corner Live Project</a>
     </div>
   </section>
 
@@ -255,6 +261,14 @@
     </div>
   </section><br />
 
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="container fade-in portfolio counter-container">
+    <div class="portfolio-card">
+      <h2>Portfolio</h2>
+      <a href="https://vimal-java-dev.github.io/" target="_blank" class="btn">Tap to read Overview</a>
+    </div>
+  </section>
+
   <!-- Contact Section -->
   <section id="contact" class="container fade-in">
     <h2>Contact Me</h2>
@@ -289,8 +303,9 @@
 
   <!-- JS -->
   <script src="/js/common.js"></script>
-  <script type="module" src="/js/visitorCounter.js"></script>
+  <!-- <script type="module" src="/js/visitorCounter.js"></script> -->
   <script src="/js/main.js"></script>
+  <script src="/js/dropdown.js"></script>
 </body>
 
 </html>
