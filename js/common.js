@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
         hamburger.textContent = "☰";
       }
     });
-
   }
 
   /* ============================
@@ -111,4 +110,47 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  // Dropdown toggle for Desktop
+  const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      const parent = toggle.parentElement;
+      parent.classList.toggle("open");
+
+      const menu = parent.querySelector(".dropdown-menu");
+      if (menu) {
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+      }
+    });
+  });
+
+  // Ensure all dropdowns are closed on page load (prevents an open menu after refresh)
+  function resetDropdowns() {
+    const dropdowns = document.querySelectorAll(".dropdown");
+    dropdowns.forEach(drop => {
+      drop.classList.remove("open");
+      const menu = drop.querySelector(".dropdown-menu");
+      if (menu) menu.style.display = "none";
+    });
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    const isDropdownToggle = e.target.matches(".dropdown-toggle");
+    const dropdown = e.target.closest(".dropdown");
+
+    document.querySelectorAll(".dropdown").forEach(drop => {
+      const menu = drop.querySelector(".dropdown-menu");
+
+      // If clicked outside this dropdown, close it
+      if (drop !== dropdown && menu) {
+        drop.classList.remove("open");
+        menu.style.display = "none";
+      }
+    });
+  });
+
 });
