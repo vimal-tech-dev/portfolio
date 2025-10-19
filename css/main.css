@@ -128,7 +128,7 @@
 }
 
 /* ===================================================
-   ===== Teck Stack Section =====
+   ===== Portfolio Section =====
 =================================================== */
 #portfolio {
   text-align: center;
@@ -155,7 +155,7 @@
   background: rgba(179, 105, 105, 0.3);
   backdrop-filter: blur(10px);
   border-radius: 20px;
-  padding: 20px;
+  padding: 60px;
   margin: 20px 0;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
