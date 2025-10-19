@@ -1,0 +1,69 @@
+  /* Modal backdrop */
+  .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* semi-transparent background */
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+  }
+
+  .modal.show {
+      display: flex;
+      opacity: 1;
+  }
+
+  /* Modal content */
+  .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 80%;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      transform: translateY(-50px);
+      transition: transform 0.3s ease;
+  }
+
+  .modal.show .modal-content {
+      transform: translateY(0);
+  }
+
+  /* Close button */
+  .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+  }
+
+  /* Button styling */
+  .open-modal-btn {
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      display: inline-block;
+      padding: 12px 25px;
+      border-radius: 30px;
+      background: #ff9800;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.3s;
+  }
+
+  .open-modal-btn:hover {
+      background-color: #0056b3;
+  }
