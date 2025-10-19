@@ -20,6 +20,7 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.55);
+  border-radius: 12px;
 }
 
 .hero-content {
@@ -125,6 +126,23 @@
 .project-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.project-card a {
+  text-decoration: none;
+  color: black;
+}
+
+.project-card a:hover {
+  color: blue;
+}
+
+body.dark .project-card a {
+  color: white;
+}
+
+body.dark .project-card a:hover {
+  color: #467db4;
 }
 
 /* ===================================================
