@@ -3,7 +3,7 @@
 =================================================== */
 .hero {
   background: url('/images/hero.png') no-repeat center/cover;
-  height: 50vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
