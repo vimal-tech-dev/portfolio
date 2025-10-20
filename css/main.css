@@ -25,18 +25,23 @@
 
 .hero-content {
   position: relative;
-  z-index: 1;
-  max-width: 800px;
+  z-index: 2;
+  max-width: 850px;
   padding: 20px;
 }
 
 .hero h1 {
   font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 15px;
 }
 
 .hero p {
   font-size: 1.2rem;
   margin: 1rem 0;
+  opacity: 0.9;
+  max-width: 650px;
 }
 
 .hero .btn {
