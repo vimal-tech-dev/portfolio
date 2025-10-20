@@ -165,6 +165,7 @@ footer {
     color: #fff;
     margin-top: 2rem;
     font-size: 0.9rem;
+    letter-spacing: 1px;
 }
 
 /* ===================================================
@@ -202,7 +203,7 @@ body.dark #contact {
 =================================================== */
 #darkModeToggle {
     position: fixed;
-    bottom: 65px;
+    bottom: 110px;
     right: 20px;
     width: 55px;
     height: 55px;
@@ -225,7 +226,7 @@ body.dark #contact {
 /* ===== Scroll to Top Button ===== */
 #scrollTopBtn {
     position: fixed;
-    bottom: 65px;
+    bottom: 110px;
     left: 20px;
     z-index: 2000;
     width: 50px;
