@@ -12,9 +12,10 @@
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/common.css">
-  <link rel="stylesheet" href="/css/dropdown.css">
+  <link rel="stylesheet" href="/css/live-projects.css">
   <link rel="stylesheet" href="/css/discount-banner.css">
   <link rel="stylesheet" href="/css/mini-services.css">
+  <link rel="stylesheet" href="/css/open-modal-btn.css">
   <link rel="stylesheet" href="/css/whatsapp-floating.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -60,19 +61,12 @@
       <li><a href="#hero" class="active">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#services-preview">Offering</a></li>
+      <li><a href="#live-projects">Live Websites</a></li>
       <!-- <li><a href="#visitor-counter">Visitor-Counter</a></li> -->
-
-      <!-- Dropdown Section -->
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle">Expertise</a>
-        <ul class="dropdown-menu">
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-        </ul>
-      </li>
-
-      <li><a href="services.html">Services</a></li> <!-- New Services link -->
+      <!-- New Expertise link -->
+      <li><a href="expertise.html">Expertise</a></li>
+      <!-- New Services link -->
+      <li><a href="services.html">Services</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <!-- hamburger icon -->
@@ -87,7 +81,7 @@
     <div class="hero-content">
       <h1>Hello,<br> I'm <span class="highlight">Vimal</span></h1>
       <p>A Passionate <strong>Java Developer</strong> building scalable backend applications.</p>
-      <a href="#projects" class="btn">View My Work</a>
+      <a href="#live-projects" class="btn">View My Work</a>
     </div>
   </section>
 
@@ -129,163 +123,46 @@
         <h3>Project Consulting</h3>
         <p>Architecture guidance and microservices design for enterprise projects.</p>
       </div>
-    </div>
+    </div><br>
 
     <div class="services-preview" style="margin-top:20px; margin-bottom:10px">
-      <a href="services.html" class="btn">View All Services</a><br /><br />
+      <a href="services.html" class="btn">View All Services</a>
     </div>
   </section>
+
+  <!-- Live Projects Section -->
+  <section id="live-projects" class="container fade-in live-projects counter-container">
+    <div class="live-projects-card">
+      <h2>Live Websites</h2>
+      <!-- Button to open modal -->
+      <button class="open-modal-btn">Tap to Open</button>
+    </div>
+  </section>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="cta-section fade-in" style="--delay:0.6s; margin-bottom: 60px;">
+        <a href="https://chaimakers.vercel.app/" target="_blank" class="btn">
+          Chai Makers Café
+        </a><br /><br /><br />
+        <a href="https://alexfoodcorner.netlify.app/" target="_blank" class="btn">
+          Alex Food Corner
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- Visitor Counter Section -->
   <section id="visitor-counter" class="container fade-in counter-container">
     <div class="visitor-count-card">
       <div class="visitor-count">
-        <h2 style="color: #222">Visitor Counter</h2>
+        <h2 style="color: #222">Visitors</h2>
         <h3 style="color: #604848">
           👋 Total Visitors: <span id="visitorCount">Loading...</span>
         </h3>
       </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="container fade-in">
-    <h2>Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-card"><i class="fab fa-java"></i>
-        <h3>Java</h3>
-      </div>
-      <div class="skill-card"><i class="fas fa-leaf"></i>
-        <h3>Spring Boot</h3>
-      </div>
-      <div class="skill-card"><i class="fas fa-cloud"></i>
-        <h3>Spring Cloud</h3>
-      </div>
-      <div class="skill-card"><i class="fas fa-database"></i>
-        <h3>Hibernate</h3>
-      </div>
-      <div class="skill-card"><i class="fas fa-plug"></i>
-        <h3>REST API</h3>
-      </div>
-      <div class="skill-card"><i class="fas fa-database"></i>
-        <h3>Oracle/sql-developer</h3>
-      </div>
-      <div class="skill-card"><i class="fab fa-aws"></i>
-        <h3>AWS</h3>
-      </div>
-      <div class="skill-card"><i class="fas fa-database"></i>
-        <h3>MongoDB</h3>
-      </div>
-      <div class="skill-card"><i class="fas fa-database"></i>
-        <h3>PostgreSQL</h3>
-      </div>
-      <div class="skill-card"><i class="fab fa-docker"></i>
-        <h3>Docker</h3>
-      </div>
-      <div class="skill-card"><i class="fas fa-server"></i>
-        <h3>Microservice Architecture</h3>
-      </div>
-      <div class="skill-card"><i class="fab fa-bootstrap"></i>
-        <h3>Bootstrap</h3>
-      </div>
-      <div class="skill-card"><i class="fab fa-node"></i>
-        <h3>Node</h3>
-      </div>
-      <div class="skill-card"><i class="fab fa-react"></i>
-        <h3>React</h3>
-      </div>
-      <div class="skill-card"><i class="fab fa-yarn"></i>
-        <h3>Yarn</h3>
-      </div>
-      <div class="skill-card"><i class="fab fa-bitbucket"></i>
-        <h3>Bitbucket</h3>
-      </div>
-      <div class="skill-card"><i class="fab fa-slack"></i>
-        <h3>Slack</h3>
-      </div>
-      <div class="skill-card"><i class="fab fa-jenkins"></i>
-        <h3>Jenkins</h3>
-      </div>
-      <div class="skill-card"><i class="fab fa-atlassian"></i>
-        <h3>Atlassian</h3>
-      </div>
-      <div class="skill-card"><i class="fab fa-jira"></i>
-        <h3>Jira</h3>
-      </div>
-      <div class="skill-card"><a href="portfolio.html#links" target="_blank">
-          <i class="fab fa-github"></i><br>GitHub</a></div>
-    </div>
-  </section><br />
-
-  <!-- Projects Section -->
-  <section id="projects" class="container fade-in">
-    <h2>Projects</h2>
-    <hr style="height:2px;border-width:0;color:rgb(56, 0, 0);background-color:rgb(92, 35, 35)">
-    <br />
-    <h3>Front-End Projects</h3>
-    <div class="projects-grid">
-      <div class="project-card">
-        <a href="https://chaimakers.vercel.app/" target="_blank">
-          <h3>Chai Makers Café</h3>
-          <p>
-            Angular | Components : CommonModule - RouterLink - RouterLinkActive | Services : MenuData
-          </p>
-        </a>
-      </div>
-      <div class="project-card">
-        <a href="https://alexfoodcorner.netlify.app/" target="_blank">
-          <h3>Alex Food Corner</h3>
-          <p>
-            React + TailwindCSS + Vite | react-router-dom : Routes, Route, BrowserRouter | react-dom/client : ReactDOM
-          </p>
-        </a>
-      </div>
-    </div>
-    <br />
-    <hr style="height:2px;border-width:0;color:rgb(56, 0, 0);background-color:rgb(92, 35, 35)">
-    <br />
-    <h3>Back-End Projects</h3>
-    <div class="projects-grid">
-      <div class="project-card">
-        <h3>PTC Windchill (Java Product)</h3>
-        <p> Customised Java Client for PTC Windchill PDMLink as Shadow Resource.</p>
-      </div>
-      <div class="project-card">
-        <h3>Parking System (POC)</h3>
-        <p>Rest API, Microservices, Docker + Swagger-UI, Postman.</p>
-      </div>
-      <div class="project-card">
-        <h3>Data Streaming App (POC)</h3>
-        <p>Spring Boot + Kafka + Spark + Docker for Real-Time Data Processing.</p>
-      </div>
-      <div class="project-card">
-        <h3>Health Care Center Management</h3>
-        <p>Core Java, Spring Framework and Hibernate + JSP + Oracle</p>
-      </div>
-      <div class="project-card">
-        <h3>Consultant Return On Investment</h3>
-        <p>Core Java, JDBC, DAO Design Pattern, Struts 2.0 Framework. + Oracle</p>
-      </div>
-      <div class="project-card">
-        <h3>E-commerce Backend Best Practices</h3>
-        <p>REST API backend with Java, Spring Boot, and Hibernate + Maven, MySQL</p>
-      </div>
-      <div class="project-card">
-        <h3>Chat Application</h3>
-        <p>Real-Time Chat with Java WebSocket & Spring Boot.</p>
-      </div>
-      <div class="project-card">
-        <h3>Desktop Chat Application (Local Area Network)</h3>
-        <p>Java Remote Method Invocation + Stubs + Skeletons, Swing Framework.</p>
-      </div>
-    </div>
-  </section><br />
-
-  <!-- Portfolio Section -->
-  <section id="portfolio" class="container fade-in portfolio counter-container">
-    <div class="portfolio-card">
-      <h2>Portfolio</h2>
-      <a href="portfolio.html" class="btn">View Overview</a>
     </div>
   </section>
 
@@ -308,7 +185,9 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Vimal Patel | Java Developer Portfolio</p>
+    <p>Contact No : 9638 474047</p>
+    <p>Email ID : vimal.patel@vimaltech.dev</p>
+    <p>&copy; 2025 Vimal Patel | Java Developer</p>
   </footer>
 
   <!-- Dark Mode Toggle -->
@@ -324,7 +203,7 @@
   <!-- JS -->
   <script src="/js/common.js"></script>
   <script type="module" src="/js/visitorCounter.js"></script>
-  <script src="/js/dropdown.js"></script>
+  <script src="/js/open-modal-btn.js"></script>
   <script src="/js/main.js"></script>
 </body>
 
