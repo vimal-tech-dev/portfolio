@@ -329,3 +329,24 @@ body.dark .visitor-count-card {
   background-color: #467db4;
   color: #000;
 }
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.cta-section a.btn {
+  background: #ff9800;
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cta-section a.btn:hover {
+  background: #ff5722;
+  transform: scale(1.05);
+}
