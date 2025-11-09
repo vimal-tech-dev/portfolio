@@ -11,10 +11,12 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/visitor-counter.css">
   <link rel="stylesheet" href="/css/common.css">
   <link rel="stylesheet" href="/css/live-projects.css">
   <link rel="stylesheet" href="/css/discount-banner.css">
   <link rel="stylesheet" href="/css/mini-services.css">
+  <link rel="stylesheet" href="/css/dropdown.css">
   <!-- Popup Window CSS -->
   <link rel="stylesheet" href="/css/open-modal-btn.css">
   <link rel="stylesheet" href="/css/whatsapp-floating.css">
@@ -59,10 +61,16 @@
     </div>
 
     <ul class="nav-links" id="nav-links">
-      <li><a href="#hero" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services-preview">Offering</a></li>
-      <!-- <li><a href="#visitor-counter">Visitor-Counter</a></li> -->
+      <!-- Dropdown Section -->
+      <li class="dropdown">
+        <a href="index.html" class="dropdown-toggle active;">Home</a>
+        <ul class="dropdown-menu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services-preview">Offering</a></li>
+          <li><a href="#live-projects">Live</a></li>
+          <li><a href="#visitor-counter">Visitors</a></li>
+        </ul>
+      </li>
       <!-- New Services link -->
       <li><a href="services.html">Services</a></li>
       <!-- New Expertise link -->
@@ -154,13 +162,45 @@
   </div>
 
   <!-- Visitor Counter Section -->
-  <section id="visitor-counter" class="container fade-in counter-container">
-    <div class="visitor-count-card">
-      <div class="visitor-count">
-        <h2 style="color: #222">Visitors</h2>
-        <h3 style="color: #604848">
-          👋 Total Counts: </br><span id="visitorCount">Loading...</span>
-        </h3>
+  <section id="visitor-counter" class="counter-wrap">
+    <div class="counter-card theme-neon">
+      <div class="counter-header">
+        <svg class="counter-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm7 9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1 7 7 0 0 1 14 0Z" />
+        </svg>
+        <div class="counter-titles">
+          <h2 class="counter-title">Visitors</h2>
+          <p class="counter-subtitle">Thanks for visiting 👋</p>
+        </div>
+      </div>
+
+      <div class="counter-body">
+        <span class="counter-label">Total Count</span>
+        <div class="counter-value-wrap">
+          <span id="visitorCount" class="counter-value shimmer" aria-live="polite">Loading…</span>
+        </div>
+      </div>
+
+      <div class="counter-footer">
+        <button id="refreshBtn" class="ghost-btn" type="button" title="Refresh">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17.65 6.35A7.95 7.95 0 0 0 12 4V1L7 6l5 5V8a5 5 0 1 1-5 5H5a7 7 0 1 0 12.65-6.65Z" />
+          </svg>
+          Refresh
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="theme-switcher" class="container fade-in">
+    <div style="text-align: center;">
+      <h2>Visitor Theme Switcher</h2>
+      <p>Try different looks for the visitor counter:</p>
+      <!-- Add this toggle anywhere on the page to try looks -->
+      <div style="display:flex; gap:8px; justify-content:center; padding:8px;">
+        <button class="ghost-btn" onclick="setTheme('theme-minimal')">Minimal</button>
+        <button class="ghost-btn" onclick="setTheme('theme-neon')">Neon</button>
+        <button class="ghost-btn" onclick="setTheme('theme-compact')">Compact</button>
       </div>
     </div>
   </section>
@@ -188,11 +228,21 @@
     <i class="fas fa-arrow-up"></i>
   </button>
 
+  <!-- Visitor Counter JS -->
+  <!-- A super-compact - theme switcher -->
+  <script>
+    function setTheme(cls) {
+      const card = document.querySelector('.counter-card');
+      card.classList.remove('theme-minimal', 'theme-neon', 'theme-compact');
+      card.classList.add(cls);
+    }
+  </script>
   <!-- JS -->
   <script src="/js/common.js"></script>
   <script type="module" src="/js/visitorCounter.js"></script>
   <!-- Popup Window JS -->
   <script src="/js/open-modal-btn.js"></script>
+  <script src="/js/dropdown.js"></script>
   <script src="/js/main.js"></script>
 </body>
 
