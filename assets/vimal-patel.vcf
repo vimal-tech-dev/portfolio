@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Patel;Vimal;;;
+FN:Vimal Patel
+ORG:Vimal Tech
+TITLE:Software Developer
+EMAIL;TYPE=INTERNET,PREF:vimal.patel@vimaltech.dev
+TEL;TYPE=CELL,VOICE:+919638474047
+ADR;TYPE=WORK:;;Valsad;Gujarat;396001;India
+URL:https://vimaltech.dev
+URL:https://www.linkedin.com/in/vimaltech/
+URL:https://www.instagram.com/vimaltech/
+NOTE:Trusted software partner.
+END:VCARD
