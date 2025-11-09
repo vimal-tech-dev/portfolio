@@ -169,36 +169,6 @@ footer {
 }
 
 /* ===================================================
-   ===== Contact Section =====
-=================================================== */
-#contact {
-    text-align: center;
-    background-color: #929599;
-}
-
-body.dark #contact {
-    background-color: #467db4;
-    color: #000;
-}
-
-.contact-links a {
-    display: inline-block;
-    margin: 10px;
-    padding: 12px 20px;
-    background: #ff9800;
-    color: #fff;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.contact-links a:hover {
-    background: #e68900;
-    transform: translateY(-3px);
-}
-
-/* ===================================================
    ===== Floating Dark Mode Toggle =====
 =================================================== */
 #darkModeToggle {
