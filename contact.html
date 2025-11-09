@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vimal Tech • Contact</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <!-- Contact Stylesheet -->
+    <link rel="stylesheet" href="/css/contact.css" />
+    <meta name="description"
+        content="A clean, modern contact page with responsive layout, client-side validation, and a subtle animated aesthetic." />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Map embed */
+        .map-embed {
+            border-top: 1px solid var(--border);
+        }
+
+        .map-embed iframe {
+            width: 100%;
+            height: 240px;
+            border: 0;
+            display: block;
+            border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+        }
+
+        /* Inspiration polish */
+        .inspo {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .inspo .panel {
+            position: relative;
+        }
+
+        /* Animated spotlight that follows the cursor a bit */
+        .inspo::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            background:
+                radial-gradient(220px 140px at var(--sx, 70%) -20%, rgba(122, 167, 255, .18), transparent 60%),
+                radial-gradient(180px 120px at 12% 115%, rgba(42, 212, 161, .12), transparent 60%);
+            filter: blur(14px);
+            pointer-events: none;
+            transition: opacity .25s ease;
+        }
+
+        .inspo:hover::before {
+            opacity: .95
+        }
+
+        /* Soft accent underline under the title */
+        .accent-underline {
+            display: block;
+            height: 6px;
+            margin-top: 6px;
+            background: linear-gradient(90deg, var(--brand), var(--ok));
+            border-radius: 999px;
+            filter: blur(6px);
+            opacity: .55;
+        }
+
+        /* Pillars grid (tiny value props) */
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        @media (max-width:700px) {
+            .pillars {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media (max-width:430px) {
+            .pillars {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .pillar {
+            border: 1px solid var(--border);
+            background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .01));
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 14px;
+            color: var(--muted);
+            transition: transform .18s ease;
+        }
+
+        .pillar svg {
+            width: 16px;
+            height: 16px;
+            opacity: .9;
+            flex: 0 0 16px
+        }
+
+        .pillar:hover {
+            transform: translateY(-2px)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="container">
+        <h5 style="text-align: center;">
+            <a href="index.html" style="color: rgb(201, 238, 99); text-decoration: none;">Home</a>&ensp;|&ensp;
+            <a href="services.html" style="color: rgb(201, 238, 99); text-decoration: none;">Services</a>&ensp;|&ensp;
+            <a href="expertise.html" style="color: rgb(201, 238, 99); text-decoration: none;">Expertise</a>&ensp;|&ensp;
+            <a href="contact.html" style="text-decoration: none; color: #ff6347">Contact</a>
+        </h5>
+        <header>
+            <div class="brand" aria-label="Brand">
+                <div class="logo" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.77 5.82 22 7 14.15l-5-4.88 6.91-1.01L12 2z" />
+                    </svg>
+                </div>
+                <span>Vimal Patel</span>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Toggle theme">
+                <svg id="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="5" />
+                    <path
+                        d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                </svg>
+                <svg id="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"
+                    aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+                </svg>
+                <span>Theme</span>
+            </button>
+        </header>
+
+        <div class="grid">
+
+            <!-- Left: Inspiration card -->
+            <section class="card" aria-label="Inspiration">
+                <div class="sparkle" aria-hidden="true"></div>
+                <div class="panel">
+                    <div class="badge" aria-hidden="true">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" />
+                        </svg>
+                        Trusted Software Partner
+                    </div>
+                    <h2 class="title" style="margin-top:12px">Let’s Build Something <em>Great</em></h2>
+                    <p class="subtitle quote">“<strong>Great software</strong> isn’t just written—it’s
+                        <strong>crafted</strong> with intention, discipline, and a drive to create clear business value.
+                        If you’re ready to ship with confidence and quality, I’m here to help.”
+                    </p>
+                </div>
+                <div class="panel">
+                    <h2 class="title">Quick Recap</h2>
+                    <p class="subtitle">Tools and technologies I love working with.</p>
+
+                    <div class="tech-badges">
+                        <span class="badge">React</span>
+                        <span class="badge">Node.js</span>
+                        <span class="badge">Angular</span>
+                        <span class="badge">MongoDB</span>
+                        <span class="badge">Flutter</span>
+                        <span class="badge">Firebase</span>
+                        <span class="badge">TypeScript</span>
+                        <span class="badge">Tailwind</span>
+                        <span class="badge">Vite</span>
+                        <span class="badge">HTML</span>
+                        <span class="badge">CSS</span>
+                        <span class="badge">JS</span>
+                        <span class="badge">Bootstrap</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right: Info card -->
+            <section class="card" data-static="true" aria-labelledby="contact-info-title">
+                <div class="panel">
+                    <h1 class="title" id="contact-info-title">Get in touch</h1>
+                    <p class="subtitle">I'd love to hear from you. You can connect me via <strong>email, phone, or
+                            socials</strong>. I'll get back within 1–2 business days.
+                    </p>
+
+                    <div class="contact-list" role="list">
+                        <div class="contact-item" role="listitem">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M4 4h16v16H4z" />
+                                <path d="M22 6l-10 7L2 6" />
+                            </svg>
+                            <div><strong>Email</strong><span>vimal.patel@vimaltech.dev</span></div>
+                        </div>
+                        <div class="contact-item" role="listitem">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path
+                                    d="M22 16.92V21a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 6.18 2 2 0 0 1 5 4h4.09a2 2 0 0 1 2 1.72l.57 3.41a2 2 0 0 1-.55 1.86l-1.2 1.2a16 16 0 0 0 6.72 6.72l1.2-1.2a2 2 0 0 1 1.86-.55l3.41.57A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                            <div><strong>Phone</strong><span>+91 9638 474047</span></div>
+                        </div>
+                        <div class="contact-item" role="listitem">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            <div><strong>Virtual Office</strong><span><a
+                                        href="https://maps.google.com/?q=Valsad,%20Gujarat%20-%20396001,%20India"
+                                        target="_blank" rel="noopener">Valsad, Gujarat - 396001, India</a></span></div>
+                        </div>
+                    </div>
+                    <div class="socials" aria-label="Social links">
+                        <a class="icon-btn" href="#" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M19.633 7.997c.013.18.013.36.013.541 0 5.507-4.193 11.856-11.856 11.856-2.355 0-4.547-.689-6.39-1.882.33.038.647.051.99.051a8.4 8.4 0 0 0 5.205-1.79 4.202 4.202 0 0 1-3.92-2.909c.255.038.51.064.779.064.374 0 .748-.051 1.096-.141a4.196 4.196 0 0 1-3.363-4.118v-.051c.547.305 1.18.492 1.854.517A4.19 4.19 0 0 1 2.84 6.17c0-.779.204-1.5.56-2.129a11.915 11.915 0 0 0 8.648 4.39 4.734 4.734 0 0 1-.103-.96 4.19 4.19 0 0 1 7.26-2.866 8.25 8.25 0 0 0 2.664-1.012 4.2 4.2 0 0 1-1.842 2.317 8.39 8.39 0 0 0 2.412-.647 9.017 9.017 0 0 1-2.006 2.136z" />
+                            </svg>
+                        </a>
+                        <a class="icon-btn" href="#" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M4.983 3.5C4.983 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.483 1.12 2.483 2.5zM.5 8h4v15h-4V8zm7 0h3.837v2.05h.053c.534-1.013 1.84-2.081 3.789-2.081C19.63 7.969 23 10.23 23 15.087V23h-4v-7.136c0-1.703-.035-3.892-2.371-3.892-2.371 0-2.734 1.852-2.734 3.77V23h-4V8z" />
+                            </svg>
+                        </a>
+                        <a class="icon-btn" href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm6.5-.25a1 1 0 11-2 0 1 1 0 012 0z" />
+                            </svg>
+                        </a>
+                        <a class="icon-btn" href="#" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M12 .5C5.73.5.99 5.24.99 11.5c0 4.86 3.15 8.98 7.51 10.43.55.1.76-.24.76-.53 0-.26-.01-1.12-.02-2.03-3.05.66-3.69-1.3-3.69-1.3-.5-1.28-1.22-1.62-1.22-1.62-.99-.67.07-.66.07-.66 1.09.08 1.66 1.12 1.66 1.12.98 1.66 2.58 1.18 3.21.9.1-.71.38-1.18.69-1.45-2.44-.28-5.01-1.23-5.01-5.47 0-1.21.43-2.2 1.14-2.98-.12-.28-.49-1.43.11-2.99 0 0 .93-.3 3.05 1.14a10.6 10.6 0 012.78-.37c.94 0 1.89.13 2.78.37 2.12-1.44 3.04-1.14 3.04-1.14.61 1.56.24 2.71.12 2.99.71.78 1.14 1.77 1.14 2.98 0 4.25-2.58 5.19-5.04 5.47.39.34.73 1.03.73 2.09 0 1.51-.01 2.73-.01 3.1 0 .29.2.64.76.53A10.994 10.994 0 0023 11.5C23 5.24 18.27.5 12 .5z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="map-embed" aria-label="Google Map: Valsad, Gujarat - 396001, India">
+                    <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46137.16927454569!2d72.9299637!3d20.606703749999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0e8208249a6cf%3A0xf6b629fd4c95a813!2sValsad%2C%20Gujarat!5e1!3m2!1sen!2sin!4v1762635890228!5m2!1sen!2sin">
+                    </iframe>
+                </div>
+            </section>
+
+            <section class="card inspo" aria-label="Inspiration">
+                <div class="sparkle" aria-hidden="true"></div>
+                <div class="panel" onmousemove="this.closest('.inspo').style.setProperty('--sx', event.offsetX + 'px')">
+                    <div class="badge" aria-hidden="true">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" />
+                        </svg>
+                        Trusted Software Partner
+                    </div>
+
+                    <h2 class="title" style="margin-top:12px">
+                        Let’s Inspire By <em>Technologies</em>
+                    </h2>
+                    <span class="accent-underline" aria-hidden="true"></span>
+
+                    <p class="subtitle quote" style="margin-top:10px">
+                        “Modern web and mobile apps built with a focus on <strong>clean architecture</strong>,
+                        predictable delivery, and maintainable code. Even as a newcomer to freelancing,
+                        I bring discipline, curiosity, and a commitment to building long-lasting solutions.”
+                    </p>
+
+                    <div class="pillars" aria-label="Core strengths">
+                        <div class="pillar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 6L9 17l-5-5" />
+                            </svg>
+                            Reliable delivery
+                        </div>
+                        <div class="pillar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="16" rx="2" />
+                                <path d="M7 8h10M7 12h6M7 16h8" />
+                            </svg>
+                            Clean architecture
+                        </div>
+                        <div class="pillar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 12h18M12 3v18" />
+                            </svg>
+                            Scaling with you
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bottom: Quick contact links -->
+            <section class="card" aria-label="Quick Contact">
+                <div class="panel">
+                    <h2 class="title">Contact Me</h2>
+                    <p class="subtitle">If you’d like to collaborate, feel free to reach out:</p>
+                    <div class="contact-links" id="quickLinks">
+                        <a href="tel:+919638474047"
+                            onmousemove="this.style.setProperty('--mx', event.offsetX+'px'); this.style.setProperty('--my', event.offsetY+'px');">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path
+                                    d="M22 16.92V21a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 6.18 2 2 0 0 1 5 4h4.09a2 2 0 0 1 2 1.72l.57 3.41a2 2 0 0 1-.55 1.86l-1.2 1.2a16 16 0 0 0 6.72 6.72l1.2-1.2a2 2 0 0 1 1.86-.55l3.41.57A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                            Call
+                        </a>
+                        <a href="mailto:vimal.patel@vimaltech.dev"
+                            onmousemove="this.style.setProperty('--mx', event.offsetX+'px'); this.style.setProperty('--my', event.offsetY+'px');">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="5" width="18" height="14" rx="2" />
+                                <path d="M3 7l9 6 9-6" />
+                            </svg>
+                            Email
+                        </a>
+                        <a href="https://www.linkedin.com/in/vimaltech/" target="_blank" rel="noopener"
+                            onmousemove="this.style.setProperty('--mx', event.offsetX+'px'); this.style.setProperty('--my', event.offsetY+'px');">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M4.983 3.5A2.5 2.5 0 112.5 1a2.5 2.5 0 012.483 2.5zM.5 8h4v15h-4V8zm7 0h3.837v2.05h.053c.534-1.013 1.84-2.081 3.789-2.081C19.63 7.969 23 10.23 23 15.087V23h-4v-7.136c0-1.703-.035-3.892-2.371-3.892-2.371 0-2.734 1.852-2.734 3.77V23h-4V8z" />
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <a href="https://www.instagram.com/vimaltech/" target="_blank" rel="noopener"
+                            onmousemove="this.style.setProperty('--mx', event.offsetX+'px'); this.style.setProperty('--my', event.offsetY+'px');">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 5a5 5 0 100 10 5 5 0 000-10zm6.5-.25a1 1 0 11-2 0 1 1 0 012 0z" />
+                            </svg>
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Scroll to Top Button -->
+        <button id="scrollTopBtn" aria-label="Scroll to top">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M18 15l-6-6-6 6" />
+            </svg>
+        </button>
+
+        <footer
+            style="margin: 22px 0; color: var(--muted); display:flex; align-items:center; justify-content:space-between; gap:16px; font-size: 13px; padding: 1.2rem;">
+            <span>© <span id="year"></span> Vimal Tech. All rights reserved.</span>
+            <span>Made with ❤️ in Valsad</span>
+            <span>
+                <a href="/assets/vimal-patel.vcf" download
+                    style="color: var(--text); text-decoration: none; border-bottom: 1px dashed var(--border)">
+                    Download vCard
+                </a>
+            </span>
+        </footer>
+    </div>
+
+    <!-- JS -->
+    <script src="/js/contact.js"></script>
+</body>
+
+</html>

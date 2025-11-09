@@ -124,4 +124,3 @@ function updateToggleIcon() {
         darkModeToggle.style.color = "#fff";
     }
 }
-
