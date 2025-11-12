@@ -24,7 +24,7 @@ body {
 /* Floating Navbar */
 nav {
     position: fixed;
-    top: 10;
+    top: 0;
     width: 100%;
     background: rgba(26, 26, 26, 0.85);
     backdrop-filter: blur(8px);
