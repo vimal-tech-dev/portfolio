@@ -46,7 +46,7 @@ section {
     color: rgb(201, 238, 99);
     position: fixed;
     width: 100%;
-    top: 0.1;
+    top: 0;
     z-index: 1000;
 }
 
