@@ -121,7 +121,8 @@
             <a href="index.html" style="color: rgb(201, 238, 99); text-decoration: none;">Home</a>&ensp;|&ensp;
             <a href="services.html" style="color: rgb(201, 238, 99); text-decoration: none;">Services</a>&ensp;|&ensp;
             <a href="expertise.html" style="color: rgb(201, 238, 99); text-decoration: none;">Expertise</a>&ensp;|&ensp;
-            <a href="contact.html" style="text-decoration: none; color: #ff6347">Contact</a>
+            <a href="contact.html" style="text-decoration: none; color: #ff6347">Contact</a>&ensp;|&ensp;
+            <a href="about.html" style="color: rgb(201, 238, 99); text-decoration: none;">About</a>
         </h5>
         <header>
             <div class="brand" aria-label="Brand">
@@ -152,46 +153,7 @@
 
         <div class="grid">
 
-            <!-- Left: Inspiration card -->
-            <section class="card" aria-label="Inspiration">
-                <div class="sparkle" aria-hidden="true"></div>
-                <div class="panel">
-                    <div class="badge" aria-hidden="true">
-                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" />
-                        </svg>
-                        Trusted Software Partner
-                    </div>
-                    <h2 class="title" style="margin-top:12px">Let’s Build Something <em>Great</em></h2>
-                    <p class="subtitle quote">“<strong>Great software</strong> isn’t just written—it’s
-                        <strong>crafted</strong> with intention, discipline, and a drive to create clear business value.
-                        If you’re ready to ship with confidence and quality, I’m here to help.”
-                    </p>
-                </div>
-                <div class="panel">
-                    <h2 class="title">Quick Recap</h2>
-                    <p class="subtitle">Tools and technologies I love working with.</p>
-
-                    <div class="tech-badges">
-                        <span class="badge">React</span>
-                        <span class="badge">Node.js</span>
-                        <span class="badge">Angular</span>
-                        <span class="badge">MongoDB</span>
-                        <span class="badge">Flutter</span>
-                        <span class="badge">Firebase</span>
-                        <span class="badge">TypeScript</span>
-                        <span class="badge">Tailwind</span>
-                        <span class="badge">Vite</span>
-                        <span class="badge">HTML</span>
-                        <span class="badge">CSS</span>
-                        <span class="badge">JS</span>
-                        <span class="badge">Bootstrap</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Right: Info card -->
+            <!-- Left: Info card -->
             <section class="card" data-static="true" aria-labelledby="contact-info-title">
                 <div class="panel">
                     <h1 class="title" id="contact-info-title">Get in touch</h1>
@@ -261,9 +223,10 @@
                 </div>
             </section>
 
-            <section class="card inspo" aria-label="Inspiration">
+            <!-- Right: Inspiration card -->
+            <section class="card" aria-label="Inspiration">
                 <div class="sparkle" aria-hidden="true"></div>
-                <div class="panel" onmousemove="this.closest('.inspo').style.setProperty('--sx', event.offsetX + 'px')">
+                <div class="panel">
                     <div class="badge" aria-hidden="true">
                         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -271,39 +234,11 @@
                         </svg>
                         Trusted Software Partner
                     </div>
-
-                    <h2 class="title" style="margin-top:12px">
-                        Let’s Inspire By <em>Technologies</em>
-                    </h2>
-                    <span class="accent-underline" aria-hidden="true"></span>
-
-                    <p class="subtitle quote" style="margin-top:10px">
-                        “Modern web and mobile apps built with a focus on <strong>clean architecture</strong>,
-                        predictable delivery, and maintainable code. Even as a newcomer to freelancing,
-                        I bring discipline, curiosity, and a commitment to building long-lasting solutions.”
+                    <h2 class="title" style="margin-top:12px">Let’s Build Something <em>Great</em></h2>
+                    <p class="subtitle quote">“<strong>Great software</strong> isn’t just written—it’s
+                        <strong>crafted</strong> with intention, discipline, and a drive to create clear business value.
+                        If you’re ready to ship with confidence and quality, I’m here to help.”
                     </p>
-
-                    <div class="pillars" aria-label="Core strengths">
-                        <div class="pillar">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20 6L9 17l-5-5" />
-                            </svg>
-                            Reliable delivery
-                        </div>
-                        <div class="pillar">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="4" width="18" height="16" rx="2" />
-                                <path d="M7 8h10M7 12h6M7 16h8" />
-                            </svg>
-                            Clean architecture
-                        </div>
-                        <div class="pillar">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M3 12h18M12 3v18" />
-                            </svg>
-                            Scaling with you
-                        </div>
-                    </div>
                 </div>
             </section>
 
@@ -346,6 +281,13 @@
                                     d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 5a5 5 0 100 10 5 5 0 000-10zm6.5-.25a1 1 0 11-2 0 1 1 0 012 0z" />
                             </svg>
                             Instagram
+                        </a>
+                        <a href="https://linktr.ee/vimaltech" target="_blank" rel="noopener"
+                            onmousemove="this.style.setProperty('--mx', event.offsetX+'px'); this.style.setProperty('--my', event.offsetY+'px');">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" />
+                            </svg>
+                            Linktree
                         </a>
                         <a href="/assets/vimal-patel.vcf" download
                             style="color: var(--text); text-decoration: none; border-bottom: 1px dashed var(--border)">

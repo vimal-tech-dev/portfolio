@@ -63,7 +63,7 @@
 /* ===================================================
    ===== About Section =====
 =================================================== */
-#about {
+#experience {
   /* background: #fff; */
   background-color: #e9ecef;
   padding: 3rem 2rem;
@@ -208,7 +208,7 @@ body.dark nav ul li a:hover {
   color: #ff9800;
 }
 
-body.dark #about,
+body.dark #experience,
 body.dark #skills,
 body.dark #projects {
   background-color: #467db4;
