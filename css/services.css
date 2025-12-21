@@ -56,7 +56,6 @@ body.dark canvas {
     filter: drop-shadow(0 0 4px rgba(0, 229, 255, 0.4));
 }
 
-
 .gradient-overlay {
     position: absolute;
     top: 0;
@@ -69,7 +68,6 @@ body.dark canvas {
     z-index: 1;
     opacity: 0.6;
 }
-
 
 /* Animation Keyframes */
 @keyframes waveMove {
@@ -107,9 +105,25 @@ body.dark canvas {
 
 .hero-services p {
     font-size: 1.2rem;
+    margin: 1rem 0;
     opacity: 0.9;
     max-width: 650px;
-    margin: 0 auto;
+}
+
+.hero-services .btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 30px;
+    background: #ff9800;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.hero-services .btn:hover {
+    background: #e68900;
+    transform: translateY(-3px);
 }
 
 /* Responsive */
