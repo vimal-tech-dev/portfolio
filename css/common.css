@@ -60,12 +60,14 @@ section {
     font-weight: 600;
     color: rgb(201, 238, 99);
     text-decoration: none;
+    display: inline-grid;
+    place-items: center;
 }
 
 /* Logo image */
 .logo {
-    height: 32px;
-    width: 32px;
+    height: 70px;
+    width: 70px;
     object-fit: contain;
     border-radius: 6px;
     /* optional for a softer look */
@@ -79,7 +81,7 @@ section {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 15px;
 }
 
 .nav-links li a {
@@ -109,7 +111,7 @@ section {
 @media (max-width: 768px) {
     .nav-links {
         position: absolute;
-        top: 60px;
+        top: 80px;
         right: 0;
         background-color: #333;
         flex-direction: column;
