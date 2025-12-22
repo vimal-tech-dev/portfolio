@@ -1,7 +1,7 @@
 /* ===== HERO SECTION ===== */
 .hero-services {
     position: relative;
-    height: 70vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,7 @@ body.dark .hero-services {
     align-items: center;
     text-align: center;
     color: #fff;
-    /* overflow: hidden; */
+    overflow: hidden;
     background: radial-gradient(circle at top right, #805922, #8d4630);
 }
 
@@ -129,7 +129,7 @@ body.dark canvas {
 /* Responsive */
 @media (max-width: 768px) {
     .hero-services {
-        height: 60vh;
+        height: 100vh;
     }
 
     .hero-services h1 {
