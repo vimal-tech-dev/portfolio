@@ -201,11 +201,16 @@ body.dark header.navbar {
 }
 
 body.dark nav ul li a {
-  color: rgb(201, 238, 99);
+  /* color: rgb(201, 238, 99); */
+  /* color: #e0e0e0; */
 }
 
 body.dark nav ul li a:hover {
   color: #ff9800;
+}
+
+body.dark .hamburger {
+  color: #000;
 }
 
 body.dark #experience,

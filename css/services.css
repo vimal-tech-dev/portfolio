@@ -282,3 +282,7 @@ body.dark #services-offer {
     width: 100%;
     /* margin-top: 10px; */
 }
+
+body.dark .hamburger {
+    color: #000;
+}

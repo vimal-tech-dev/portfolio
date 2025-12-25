@@ -41,9 +41,9 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #7a7878;
+    background-color: #ffffff;
     padding: 10px 20px;
-    color: rgb(201, 238, 99);
+    /* color: rgb(201, 238, 99); */
     position: fixed;
     width: 100%;
     top: 0;
@@ -54,20 +54,30 @@ section {
 .brand {
     display: flex;
     align-items: center;
-    gap: 8px;
-    /* space between logo and text */
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: rgb(201, 238, 99);
+    gap: 10px;
     text-decoration: none;
-    display: inline-grid;
-    place-items: center;
+}
+
+.brand-name {
+    font-size: 1.8rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.brand-name-vimal {
+    color: #000000;
+    font-weight: 700;
+}
+
+.brand-name-tech {
+    color: #a6e22e;
+    /* neon green */
 }
 
 /* Logo image */
 .logo {
-    height: 70px;
-    width: 70px;
+    height: 36px;
+    width: 36px;
     object-fit: contain;
     border-radius: 6px;
     /* optional for a softer look */
@@ -82,12 +92,28 @@ section {
     list-style: none;
     display: flex;
     gap: 15px;
+    font-size: 20px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.nav-links .dropdown li a {
+    color: #a6e22e;
+    /* neon green */
 }
 
 .nav-links li a {
     text-decoration: none;
-    color: rgb(201, 238, 99);
     transition: color 0.3s;
+    color: #333;
 }
 
 .nav-links li a:hover,
@@ -111,7 +137,7 @@ section {
 @media (max-width: 768px) {
     .nav-links {
         position: absolute;
-        top: 80px;
+        top: 65px;
         right: 0;
         background-color: #333;
         flex-direction: column;
@@ -125,6 +151,12 @@ section {
         margin: 10px 0;
     }
 
+    .nav-links li a {
+        color: #fff;
+        transition: color 0.3s;
+
+    }
+
     .hamburger {
         display: block;
     }
@@ -132,6 +164,7 @@ section {
     .nav-links.active {
         display: flex;
     }
+
 }
 
 /* ===================================================
