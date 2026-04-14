@@ -205,28 +205,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="contact-form-wrapper glass-panel">
-                <h3 style="margin-bottom: 20px; font-family: var(--font-primary);">Put Quick Details and get Quotation
-                </h3>
-                <div class="info-card highlight-card fade-in" style="--delay: 0.3s; margin-bottom: 20px;">
-                    <div class="card-content">
-                        <div class="input-group">
-                            <label for="name">Your Name:</label>
-                        </div>
-                        <div class="input-group">
-                            <label for="email">Email Address:</label>
-                        </div>
-                        <div class="input-group">
-                            <label for="message">Project Requirements:</label>
-                        </div>
-                        <a href="/contact" class="btn primary glow-btn"
-                            style="width: 100%; border: none; cursor: pointer;">
-                            Go to Contact Form <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
-                        </a>
-                    </div>
-                </div>
                 <div class="info-card highlight-card fade-in" style="--delay: 0.3s;">
                     <div class="card-icon"><i class="fas fa-certificate"></i></div>
                     <div class="card-content">
@@ -251,6 +229,49 @@
                 </div>
             </div>
 
+            <div class="contact-form-wrapper glass-panel">
+                <h3 style="margin-bottom: 20px; font-family: var(--font-primary);">Start a Conversation</h3>
+
+                <form action="#" method="POST" class="contact-form fade-in" style="--delay: 0.3s;">
+
+                    <div class="input-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="e.g., John Doe" required
+                            autocomplete="name">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required
+                            autocomplete="email">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="service">How can we help?</label>
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Select a service...</option>
+                            <option value="backend">Java Backend / API Development</option>
+                            <option value="fullstack">Full-Stack Web Development</option>
+                            <option value="vps">Deployment / Server Setup</option>
+                            <option value="other">General Inquiry / Consultation</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="message">Project Requirements</label>
+                        <textarea id="message" name="message" rows="5"
+                            placeholder="Tell me about your vision, tech stack, or timeline..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn primary glow-btn"
+                        style="width: 100%; border: none; cursor: pointer; margin-top: 10px;">
+                        Send Message <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
+                    </button>
+                    <p style="font-size: 0.8rem; color: var(--color-muted); text-align: center; margin-top: 10px;">
+                        I typically respond within <strong>24 hours</strong>.
+                    </p>
+                </form>
+            </div>
         </div>
     </section>
 

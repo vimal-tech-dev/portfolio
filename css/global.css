@@ -1061,8 +1061,6 @@ body.dark .section-title {
     /* 40px is the sweet spot for premium footer logos */
     width: auto;
     object-fit: contain;
-    /* Optional: Gives your lime-green 'V' a tiny subtle glow against the dark background */
-    filter: drop-shadow(0 0 6px rgba(163, 230, 53, 0.4));
     margin-bottom: -10px;
 }
 

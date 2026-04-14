@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ? "http://localhost:8080"
             : "https://api.vimaltech.dev";
 
-        fetch(`${API_BASE}/api/v1/contact`, {
+        fetch(`${API_BASE}/api/v1/contacts`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
