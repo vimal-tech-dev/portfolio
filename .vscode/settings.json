@@ -1,5 +1,7 @@
 {
-    "liveServer.settings.port": 5501,
+    "liveServer.settings.port": 3000,
     "files.refactoring.autoSave": false,
-    "notebook.codeActionsOnSave": {}
+    "notebook.codeActionsOnSave": {},
+    "liveServer.settings.cors": false,
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": ""
 }
