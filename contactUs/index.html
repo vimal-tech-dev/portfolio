@@ -232,22 +232,25 @@
             <div class="contact-form-wrapper glass-panel">
                 <h3 style="margin-bottom: 20px; font-family: var(--font-primary);">Start a Conversation</h3>
 
-                <form action="#" method="POST" class="contact-form fade-in" style="--delay: 0.3s;">
+                <form id="contactForm" class="contact-form fade-in" style="--delay: 0.3s;" novalidate>
 
                     <div class="input-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" placeholder="e.g., John Doe" required
-                            autocomplete="name">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" autocomplete="name" required
+                            placeholder="e.g., John Doe">
+                        <span class="field-error" id="error-name"></span>
                     </div>
 
                     <div class="input-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="john@example.com" required
-                            autocomplete="email">
+                        <input type="email" id="email" name="email" autocomplete="email" required
+                            placeholder="john@example.com">
+                        <span class="field-error" id="error-email"></span>
                     </div>
 
                     <div class="input-group">
-                        <label for="service">How can we help?</label>
+                        <label for="service">How can we help? <span
+                                style="font-weight: normal; font-size: 0.8rem; color: var(--color-muted);">(optional)</span></label>
                         <select id="service" name="service" required>
                             <option value="" disabled selected>Select a service...</option>
                             <option value="backend">Java Backend / API Development</option>
@@ -255,18 +258,33 @@
                             <option value="vps">Deployment / Server Setup</option>
                             <option value="other">General Inquiry / Consultation</option>
                         </select>
+                        <span class="field-error" id="error-service"></span>
                     </div>
 
                     <div class="input-group">
                         <label for="message">Project Requirements</label>
-                        <textarea id="message" name="message" rows="5"
-                            placeholder="Tell me about your vision, tech stack, or timeline..." required></textarea>
+                        <textarea id="message" name="message" rows="5" required
+                            placeholder="Share a brief overview of your project, goals, and timelines."></textarea>
+                        <div class="char-count-wrapper">
+                            <span class="field-error" id="error-message"></span>
+                            <span class="char-count" id="charCount">0 / 1000</span>
+                        </div>
                     </div>
 
-                    <button type="submit" class="btn primary glow-btn"
-                        style="width: 100%; border: none; cursor: pointer; margin-top: 10px;">
-                        Send Message <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
+                    <button type="submit" class="btn primary glow-btn" id="submitBtn"
+                        style="width: 100%; border: none; cursor: pointer; margin-top: 10px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                        <span class="btn-text">Send Message</span>
+                        <i class="fas fa-paper-plane submit-icon"></i>
                     </button>
+
+                    <div class="form-success" id="formSuccess">
+                        <i class="fas fa-check-circle" style="margin-right: 8px;"></i> Your message has been sent. I’ll
+                        get back to you soon.
+                    </div>
+
+                    <p class="fallback-text">
+                        Having trouble? Please use the provided email, phone, or WhatsApp to reach out directly.
+                    </p>
                     <p style="font-size: 0.8rem; color: var(--color-muted); text-align: center; margin-top: 10px;">
                         I typically respond within <strong>24 hours</strong>.
                     </p>
