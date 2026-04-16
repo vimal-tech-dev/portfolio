@@ -124,57 +124,56 @@ document.addEventListener("DOMContentLoaded", function () {
                     },
                     body: JSON.stringify(formData),
                 })
-                    .then(async (response) => {
-                        const data = await response.json();
-                        if (!response.ok) {
-                            throw new Error(data.message || "Server error");
-                        }
-                        return data;
-                    })
-                    .then((data) => {
-                        if (data.success) {
-                            // Reset UI & Show Success
-                            submitBtn.classList.remove("loading");
-                            submitBtn.querySelector(".btn-text").textContent = "Message Sent";
-                            if (submitIcon) {
-                                submitIcon.classList.remove("fa-spinner", "fa-spin");
-                                submitIcon.classList.add("fa-check");
-                            }
-
-                            // Reset form fields
-                            form.reset();
-                            // Reset character counter
-                            if (charCountSpan) charCountSpan.textContent = `0 / ${maxChars}`;
-
-                            // Show success message
-                            successMsg.classList.add("visible");
-
-                            // Revert Button text after 3 seconds
-                            setTimeout(() => {
-                                submitBtn.querySelector(".btn-text").textContent = "Send Message";
-                                if (submitIcon) {
-                                    submitIcon.classList.remove("fa-check");
-                                    submitIcon.classList.add("fa-paper-plane");
-                                }
-                                successMsg.classList.remove("visible");
-                            }, 3000);
-                        } else {
-                            throw new Error(data.message);
-                        }
-                    })
-                    .catch((error) => {
-                        console.error("API Error:", error);
-
-                        // Revert Loading UI
+                .then(async (response) => {
+                    const data = await response.json();
+                    if (!response.ok) {
+                        throw new Error(data.message || "Server error");
+                    }
+                    return data;
+                })
+                .then((data) => {
+                    if (data.success) {
+                        // Reset UI & Show Success
                         submitBtn.classList.remove("loading");
-                        submitBtn.querySelector(".btn-text").textContent = "Send Message";
+                        submitBtn.querySelector(".btn-text").textContent = "Message Sent";
                         if (submitIcon) {
                             submitIcon.classList.remove("fa-spinner", "fa-spin");
-                            submitIcon.classList.add("fa-paper-plane");
+                            submitIcon.classList.add("fa-check");
                         }
 
-                        alert("Submission failed. Please try again or use the fallback contact methods.");
-                    });
+                        // Reset form fields
+                        form.reset();
+                        // Reset character counter
+                        if (charCountSpan) charCountSpan.textContent = `0 / ${maxChars}`;
+
+                        // Show success message
+                        successMsg.classList.add("visible");
+
+                        // Revert Button text after 3 seconds
+                        setTimeout(() => {
+                            submitBtn.querySelector(".btn-text").textContent = "Send Message";
+                            if (submitIcon) {
+                                submitIcon.classList.remove("fa-check");
+                                submitIcon.classList.add("fa-paper-plane");
+                            }
+                            successMsg.classList.remove("visible");
+                        }, 3000);
+                    } else {
+                        throw new Error(data.message);
+                    }
+                })
+                .catch((error) => {
+                    console.error("API Error:", error);
+
+                    // Revert Loading UI
+                    submitBtn.classList.remove("loading");
+                    submitBtn.querySelector(".btn-text").textContent = "Send Message";
+                    if (submitIcon) {
+                        submitIcon.classList.remove("fa-spinner", "fa-spin");
+                        submitIcon.classList.add("fa-paper-plane");
+                    }
+                    alert("Submission failed. Please try again or use the fallback contact methods.");
+                });
             }
         });
     }
