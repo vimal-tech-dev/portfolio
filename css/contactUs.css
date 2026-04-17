@@ -1,48 +1,4 @@
 /* contact.css - Modern Glassmorphic Form & Cards */
-
-/* ===== HERO SECTION ===== */
-.hero-contact {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-    background: radial-gradient(circle at center, #1e293b, #020617);
-    color: #e5ff7a;
-}
-
-body.dark .hero-contact {
-    background: radial-gradient(circle at center, #0f172a, #000000);
-}
-
-#particles-js {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-}
-
-body.dark #particles-js canvas {
-    filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.35));
-}
-
-.gradient-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, rgba(56, 189, 248, 0.1), rgba(0, 0, 0, 0.5));
-    z-index: 1;
-}
-
-.hero-contact .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 850px;
-    padding: 20px;
-}
-
 /* ===== CONTACT GRID ===== */
 .contact-grid {
     display: grid;
@@ -90,7 +46,7 @@ body.dark .glass-panel {
 }
 
 .input-group {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-align: left;
 }
 
@@ -385,7 +341,7 @@ body.dark .udyam-box {
     gap: 1.2rem;
 }
 
-/* Base Input Styling - Updated for better contrast and visibility */
+/* Base Input Styling - Unifies all fields to Dark Navy */
 .input-group input,
 .input-group select,
 .input-group textarea {
@@ -394,7 +350,8 @@ body.dark .udyam-box {
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     /* Using a dark translucent background prevents it from looking solid white */
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: #1a1a2e;
+    /* Forces the sleek navy blue on all fields */
     color: #ffffff;
     /* Explicitly force text to be white */
     font-family: inherit;
@@ -513,10 +470,12 @@ body.dark .udyam-box {
     animation: fadeIn 0.3s ease;
 }
 
-/* Input Error State */
+/* Input Error State - Keeps background dark so white text is visible */
 .input-error {
     border-color: #ef4444 !important;
-    background-color: rgba(239, 68, 68, 0.05) !important;
+    background-color: #2a1616 !important;
+    /* A very dark red tint instead of transparent */
+    box-shadow: 0 0 0 1px #ef4444 inset !important;
 }
 
 /* Character Counter Layout */
@@ -577,9 +536,8 @@ button.loading {
 /* Fallback Text */
 .fallback-text {
     font-size: 0.8rem;
-    color: rgba(0, 0, 0, 0.4);
+    color: var(--color-muted);
     text-align: center;
-    margin-top: 15px;
     line-height: 1.5;
 }
 
@@ -593,4 +551,172 @@ button.loading {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* ============= */
+.hero-availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #94a3b8;
+    background: rgba(74, 222, 128, 0.08);
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    padding: 8px 18px;
+    border-radius: 100px;
+    margin-bottom: 60px;
+}
+
+.availability-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.4);
+    animation: pulseDot 3s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 6px rgba(74, 222, 128, 0);
+    }
+}
+
+.hero-scroll-hint {
+    position: absolute;
+    bottom: -60px;
+    /* Adjusted to fit better */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 900;
+}
+
+.hero-scroll-hint:hover {
+    color: var(--amber);
+}
+
+.scroll-line {
+    margin-top: auto;
+    width: 3px;
+    height: 100px;
+    background: linear-gradient(to bottom, var(--text-dim), transparent);
+    animation: scrollBob 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollBob {
+
+    0%,
+    100% {
+        transform: scaleY(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scaleY(0.6);
+        opacity: 1;
+    }
+}
+
+/* Google Maps Section */
+.map-section {
+    max-width: 1100px;
+    margin: 20px auto 80px;
+    padding: 0 24px;
+    position: relative;
+}
+
+.map-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+}
+
+.map-section iframe {
+    width: 100%;
+    height: 450px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+    display: block;
+    filter: none;
+    /* No filter by default */
+    /* Cool dark map effect */
+    transition: filter 0.3s;
+}
+
+/* 2. Desktop only: Apply the dark effect and hover trigger */
+@media (hover: hover) {
+    .map-section iframe {
+        filter: grayscale(1) invert(0.9);
+        /* Start dark on desktop */
+    }
+
+    .map-section iframe:hover {
+        filter: none;
+        /* Turn colorful on hover */
+    }
+}
+
+/* 3. Mobile adjustments: Handle small screen sizing */
+@media (max-width: 768px) {
+    .map-section {
+        margin: 20px auto 40px;
+        padding: 0 16px;
+    }
+
+    .map-section iframe {
+        height: 300px;
+        /* Force color on mobile by overriding desktop filters */
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+}
+
+.map-button {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.map-open-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: var(--radius);
+    transition: background 0.3s ease;
+    box-shadow: var(--shadow-card);
+}
+
+.map-open-btn:hover {
+    background: linear-gradient(90deg,
+            #ffffff,
+            #ff6b3e);
+    color: black;
 }
