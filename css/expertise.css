@@ -1,48 +1,4 @@
 /* expertise.css - Elegant & Modern Update (Matches services.css style) */
-
-/* ===================================================
-   ===== Hero Section =====
-=================================================== */
-.hero {
-    /* background: url('/images/hero.png') no-repeat center/cover; */
-    overflow: hidden;
-    background: radial-gradient(circle at center, #1e293b, #020617);
-}
-
-/* .hero::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.55);
-    border-radius: 12px;
-} */
-
-body.dark .hero-expertise {
-    background: radial-gradient(circle at center, #0f172a, #000000);
-}
-
-#particles-js {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-}
-
-body.dark #particles-js canvas {
-    filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.35));
-}
-
-.gradient-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, rgba(56, 189, 248, 0.1), rgba(0, 0, 0, 0.5));
-    z-index: 1;
-}
-
 .hero p {
     font-size: 1.2rem;
     margin: 1rem 0;
@@ -165,6 +121,25 @@ body.dark .category-title {
 
 .skill-card:hover i {
     transform: scale(1.15);
+}
+
+.icon-yaml-custom {
+    display: inline-block;
+    width: 1em; /* Matches the size of your other icons automatically */
+    height: 1em;
+    vertical-align: middle;
+    /* Ensure the filename below matches exactly what you saved on your computer */
+    background-image: url('/assets/yaml_icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* This targets all icons in your skill cards to keep them uniform */
+.skill-card i {
+    font-size: 2.5rem; /* Adjust this to match your existing portfolio size */
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
 }
 
 /* ===================================================

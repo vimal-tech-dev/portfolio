@@ -187,4 +187,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // targeting your anchor tags with href starting
+  // 1. Grab all the sections you want to track
+  const sectionDM = document.querySelectorAll("section[id]");
+
+  // 2. The function that handles the class switching
+  const navObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Get the ID of the section currently in view
+          const id = entry.target.getAttribute("id");
+
+          // Remove 'active' class from ALL links
+          document.querySelectorAll(".dropdown-menu a").forEach((link) => {
+            link.classList.remove("active");
+          });
+
+          // Add 'active' class to the link that matches the current section ID
+          const activeLink = document.querySelector(`a[href="#${id}"]`);
+          if (activeLink) {
+            activeLink.classList.add("active");
+          }
+        }
+      });
+    },
+    { threshold: 0.7 }
+  ); // 70% of section visible triggers the change
+
+  // 3. Start watching the sections
+  sectionDM.forEach((section) => {
+    navObserver.observe(section);
+  });
 });

@@ -63,7 +63,7 @@
 
 .dropdown-menu a {
     display: block;
-    color: #fff;
+    /* color: #fff; */
     padding: 8px 16px;
     text-decoration: none;
     transition: background 0.3s;
@@ -77,17 +77,33 @@
     padding: 8px 20px;
 }
 
+/* Default link style */
 .dropdown-menu li a {
     color: #475569 !important;
     font-size: 1rem;
     display: block;
     width: 100%;
+    transition: all 0.3s ease;
+    padding: 10px 15px;
+    display: block;
+    text-decoration: none;
 }
 
 .dropdown-menu li a:hover {
     color: var(--color-primary) !important;
     transform: translateX(5px);
     /* Slide right on hover */
+}
+
+/* The Active State - When the user is scrolling that section */
+.dropdown-menu li a.active {
+    color: #E95420;
+    /* Ubuntu Orange */
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.1);
+    /* Subtle glass highlight */
+    border-left: 3px solid #E95420;
+    /* Visual indicator on the side */
 }
 
 /* Arrow indicator (base) */

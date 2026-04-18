@@ -1,43 +1,4 @@
 /* Services.css - Elegant & Modern Update */
-
-/* ===== HERO SECTION ===== */
-.hero-services {
-    overflow: hidden;
-    /* Aligned with global elegant dark tech theme instead of bright orange */
-    background: radial-gradient(circle at center, #1e293b, #020617);
-}
-
-body.dark .hero-services {
-    background: radial-gradient(circle at center, #0f172a, #000000);
-}
-
-/* Particles Overlay */
-#particles-js {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-}
-
-body.dark #particles-js canvas {
-    filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.35));
-}
-
-.gradient-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, rgba(56, 189, 248, 0.1), rgba(0, 0, 0, 0.5));
-    z-index: 1;
-}
-
-.hero-services .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 850px;
-    padding: 20px;
-}
-
 /* ===== UTILITIES ===== */
 .section-header {
     text-align: center;
