@@ -430,7 +430,7 @@ body.dark nav.scrolled .hamburger {
 
     .hamburger.active {
         transform: rotate(180deg);
-        font-weight: 500 !important;
+        font-weight: bolder !important;
     }
 
     .nav-links {

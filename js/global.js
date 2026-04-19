@@ -14,8 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hamburger.classList.toggle("active");
       // This opens your actual menu
       navLinks.classList.toggle("open");
-      hamburger.textContent = navLinks.classList.contains("active") ? "✖" : "☰";
-      
+      hamburger.textContent = navLinks.classList.contains("active") ? "✕" : "☰";
     });
 
     // Close the menu when any nav link is clicked
