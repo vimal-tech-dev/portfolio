@@ -100,12 +100,12 @@ jobs:
           done
 
           echo "🎉 All PR commits are valid and trusted"
-
+      
           else
           echo "🔍 Push to main detected"
-
           echo "ℹ️ Skipping strict GPG verification for merge/rebase/squash commit"
           git log -1 --oneline
+          fi
 
       # ---------- Optional status for skipped forked PRs ----------
       - name: Skip GPG checks for external PRs
