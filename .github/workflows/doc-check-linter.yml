@@ -65,7 +65,12 @@ jobs:
       # ---------- Verify latest commit ----------
       - name: Verify latest commit signature
         run: |
-          LATEST_COMMIT=${{ github.event.pull_request.head.sha }}
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            LATEST_COMMIT=${{ github.event.pull_request.head.sha }}
+          else
+            LATEST_COMMIT=$(git rev-parse HEAD)
+          fi
+
           echo "🔍 Verifying commit: $LATEST_COMMIT"
 
           if git verify-commit "$LATEST_COMMIT" >/dev/null 2>&1; then
