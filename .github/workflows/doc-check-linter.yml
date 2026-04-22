@@ -34,7 +34,8 @@ jobs:
         run: htmlhint "**/*.html" || true
 
   # -------------------
-  # 2. DCO + GPG Check (latest commit only)
+  # 2. DCO + GPG Check
+  # 2.1 Commit Verification (GPG + Trust)
   # -------------------
   commit-checks:
     runs-on: ubuntu-latest
@@ -49,73 +50,42 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: tisonkun/actions-dco@v1.1
 
-      # ---------- Import GPG Public Key ----------
-      - name: Import trusted GPG public key
-        if: ${{ github.event.pull_request.head.repo.full_name == github.repository || github.event_name != 'pull_request' }}
-        env:
-          GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }}
-          GPG_PUBLIC_KEY_1: ${{ secrets.GPG_PUBLIC_KEY_1 }}
+      - name: Import GPG public keys
         run: |
-          # Check for primary GPG key
-          if [ -z "$GPG_PUBLIC_KEY" ] && [ -z "$GPG_PUBLIC_KEY_1" ]; then
-            echo "⚠️ Skipping GPG import: No secrets available (forked PR or missing keys)."
-            exit 0
+          if [ -n "${{ secrets.GPG_PUBLIC_KEY }}" ]; then
+            echo "${{ secrets.GPG_PUBLIC_KEY }}" | gpg --import
+            echo "✅ Imported GPG_PUBLIC_KEY"
           fi
 
-          # Function to import and trust a GPG key
-          import_key() {
-            local key="$1"
-            local varname="$2"
-            if [ -n "$key" ]; then
-              echo "$key" | gpg --import
-              echo "✅ Imported $varname successfully."
-              fingerprint=$(echo "$key" | gpg --with-colons --import-options show-only --import 2>/dev/null | awk -F: '$1=="fpr"{print $10; exit}')
-              if [ -n "$fingerprint" ]; then
-                echo "$fingerprint:6:" | gpg --import-ownertrust
-                echo "🔐 Set $varname ($fingerprint) to ultimate trust."
-              fi
-            fi
-          }
-
-          # Import your own keys
-          import_key "$GPG_PUBLIC_KEY" "GPG_PUBLIC_KEY"
-          import_key "$GPG_PUBLIC_KEY_1" "GPG_PUBLIC_KEY_1"
-
-          # ✅ Import GitHub’s official signing keys (commit + merge)
-          echo "🌐 Importing GitHub official GPG signing keys..."
-          curl -fsSL https://github.com/web-flow.gpg | gpg --import || true
-          curl -fsSL https://github.com/actions/runner-images/blob/main/images/github-bot.gpg?raw=true | gpg --import || true
-          echo "✅ Imported GitHub web-flow and merge bot keys successfully."
-
-          echo "🎉 All available GPG public keys imported successfully."
-
-      # ---------- Verify latest commit signature ----------
+          if [ -n "${{ secrets.GPG_PUBLIC_KEY_1 }}" ]; then
+            echo "${{ secrets.GPG_PUBLIC_KEY_1 }}" | gpg --import
+            echo "✅ Imported GPG_PUBLIC_KEY_1"
+          fi
+          
+      # ---------- Verify latest commit ----------
       - name: Verify latest commit signature
-        if: ${{ github.event.pull_request.head.repo.full_name == github.repository || github.event_name != 'pull_request' }}
         run: |
-          LATEST_COMMIT=$(git rev-parse HEAD)
-          echo "🔍 Checking latest commit: $LATEST_COMMIT"
+          LATEST_COMMIT=${{ github.event.pull_request.head.sha }}
+          echo "🔍 Verifying commit: $LATEST_COMMIT"
 
-          SIG=$(git log --show-signature -1 "$LATEST_COMMIT")
-          echo "$SIG"
-
-          # ✅ Include all trusted fingerprints
-          TRUSTED_KEYS="7F4C7CA953E1C09E D432152833DA3244 88F6CD4E295C9062 BE677DAEFE33CB57 C97540DA6C9FA85C"
-          GITHUB_COMMIT_KEY="4AEE18F83AFDEB23"     # GitHub web-flow
-          GITHUB_MERGE_KEY="B5690EEEBB952194"      # GitHub merge bot
-          TRUSTED="$TRUSTED_KEYS $GITHUB_COMMIT_KEY $GITHUB_MERGE_KEY"
-
-          if echo "$SIG" | grep -q "Good signature"; then
-            for key in $TRUSTED; do
-              if echo "$SIG" | grep -q "$key"; then
-                echo "✅ Commit signed with trusted key: $key"
-                exit 0
-              fi
-            done
+          if git verify-commit "$LATEST_COMMIT" >/dev/null 2>&1; then
+            echo "✅ Signature is cryptographically valid"
+          else
+            echo "❌ Invalid or missing GPG signature"
+            exit 1
           fi
 
-          echo "❌ Commit is not GPG signed with a trusted key!"
-          exit 1
+          FINGERPRINT=$(git log -1 --pretty=format:'%GF' "$LATEST_COMMIT")
+          echo "🔑 Signing fingerprint: $FINGERPRINT"
+
+          TRUSTED_KEYS="83FB991D930D7177F25456C07F4C7CA953E1C09E D432152833DA3244 4AEE18F83AFDEB23 B5690EEEBB952194"
+
+          if echo "$TRUSTED_KEYS" | grep -q "$FINGERPRINT"; then
+            echo "✅ Trusted signer"
+          else
+            echo "❌ Untrusted signing key!"
+            exit 1
+          fi
 
       # ---------- Optional status for skipped forked PRs ----------
       - name: Skip GPG checks for external PRs
