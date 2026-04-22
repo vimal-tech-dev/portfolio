@@ -50,14 +50,24 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: tisonkun/actions-dco@v1.1
 
+      - name: Import GPG public keys
+        run: |
+          if [ -n "${{ secrets.GPG_PUBLIC_KEY }}" ]; then
+            echo "${{ secrets.GPG_PUBLIC_KEY }}" | gpg --import
+            echo "✅ Imported GPG_PUBLIC_KEY"
+          fi
+
+          if [ -n "${{ secrets.GPG_PUBLIC_KEY_1 }}" ]; then
+            echo "${{ secrets.GPG_PUBLIC_KEY_1 }}" | gpg --import
+            echo "✅ Imported GPG_PUBLIC_KEY_1"
+          fi
+          
       # ---------- Verify latest commit ----------
       - name: Verify latest commit signature
-        if: ${{ github.event.pull_request.head.repo.full_name == github.repository || github.event_name != 'pull_request' }}
         run: |
           LATEST_COMMIT=${{ github.event.pull_request.head.sha }}
           echo "🔍 Verifying commit: $LATEST_COMMIT"
 
-          # Step 1: Cryptographic verification
           if git verify-commit "$LATEST_COMMIT" >/dev/null 2>&1; then
             echo "✅ Signature is cryptographically valid"
           else
@@ -65,12 +75,10 @@ jobs:
             exit 1
           fi
 
-          # Step 2: Extract fingerprint
-          FINGERPRINT=$(git log -1 --pretty=format:'%GF')
+          FINGERPRINT=$(git log -1 --pretty=format:'%GF' "$LATEST_COMMIT")
           echo "🔑 Signing fingerprint: $FINGERPRINT"
 
-          # Step 3: Trusted keys (you + GitHub)
-          TRUSTED_KEYS="7F4C7CA953E1C09E 4AEE18F83AFDEB23 B5690EEEBB952194"
+          TRUSTED_KEYS="7F4C7CA953E1C09E D432152833DA3244 4AEE18F83AFDEB23 B5690EEEBB952194"
 
           if echo "$TRUSTED_KEYS" | grep -q "$FINGERPRINT"; then
             echo "✅ Trusted signer"
