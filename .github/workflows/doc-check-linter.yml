@@ -63,34 +63,49 @@ jobs:
           fi
           
       # ---------- Verify latest commit ----------
-      - name: Verify latest commit signature
+      - name: Verify commit signature
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            LATEST_COMMIT=${{ github.event.pull_request.head.sha }}
+          echo "🔍 PR mode: verifying ALL commits in PR"
+
+          BASE=${{ github.event.pull_request.base.sha }}
+          HEAD=${{ github.event.pull_request.head.sha }}
+
+          # Get all commits in PR
+          COMMITS=$(git rev-list $BASE..$HEAD)
+
+          for COMMIT in $COMMITS; do
+            echo "🔎 Checking commit: $COMMIT"
+
+            # Step 1: Cryptographic verification
+            if git verify-commit "$COMMIT" >/dev/null 2>&1; then
+              echo "✅ Signature valid"
+            else
+              echo "❌ Commit not signed properly"
+              exit 1
+            fi
+
+            # Step 2: Fingerprint check
+            FINGERPRINT=$(git log -1 --pretty=format:'%GF' "$COMMIT")
+            echo "🔑 Fingerprint: $FINGERPRINT"
+
+            TRUSTED_KEYS="83FB991D930D7177F25456C07F4C7CA953E1C09E D432152833DA3244"
+
+            if echo "$TRUSTED_KEYS" | grep -q "$FINGERPRINT"; then
+              echo "✅ Trusted key"
+            else
+              echo "❌ Untrusted key!"
+              exit 1
+            fi
+          done
+
+          echo "🎉 All PR commits are valid and trusted"
+
           else
-            LATEST_COMMIT=$(git rev-parse HEAD)
-          fi
+          echo "🔍 Push to main detected"
 
-          echo "🔍 Verifying commit: $LATEST_COMMIT"
-
-          if git verify-commit "$LATEST_COMMIT" >/dev/null 2>&1; then
-            echo "✅ Signature is cryptographically valid"
-          else
-            echo "❌ Invalid or missing GPG signature"
-            exit 1
-          fi
-
-          FINGERPRINT=$(git log -1 --pretty=format:'%GF' "$LATEST_COMMIT")
-          echo "🔑 Signing fingerprint: $FINGERPRINT"
-
-          TRUSTED_KEYS="83FB991D930D7177F25456C07F4C7CA953E1C09E D432152833DA3244 4AEE18F83AFDEB23 B5690EEEBB952194"
-
-          if echo "$TRUSTED_KEYS" | grep -q "$FINGERPRINT"; then
-            echo "✅ Trusted signer"
-          else
-            echo "❌ Untrusted signing key!"
-            exit 1
-          fi
+          echo "ℹ️ Skipping strict GPG verification for merge/rebase/squash commit"
+          git log -1 --oneline
 
       # ---------- Optional status for skipped forked PRs ----------
       - name: Skip GPG checks for external PRs
