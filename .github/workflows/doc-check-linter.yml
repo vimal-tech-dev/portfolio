@@ -96,8 +96,8 @@ jobs:
             FINGERPRINT=$(git log -1 --pretty=format:'%GF' "$COMMIT")
             echo "🔑 Fingerprint: $FINGERPRINT"
 
-            # Added your contributor fingerprint (A38379B51EB75EF1877A83ADBE677DAEFE33CB57) to the trusted list
-            TRUSTED_KEYS="83FB991D930D7177F25456C07F4C7CA953E1C09E D432152833DA3244 A38379B51EB75EF1877A83ADBE677DAEFE33CB57"
+            # Replaced the short ID with the full 40-character fingerprint
+            TRUSTED_KEYS="83FB991D930D7177F25456C07F4C7CA953E1C09E 5CC01F41CD084AAC0593108DD432152833DA3244 A38379B51EB75EF1877A83ADBE677DAEFE33CB57"
 
             if echo "$TRUSTED_KEYS" | grep -q "$FINGERPRINT"; then
               echo "✅ Trusted key"
