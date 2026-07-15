@@ -1,0 +1,722 @@
+/* contact.css - Modern Glassmorphic Form & Cards */
+/* ===== CONTACT GRID ===== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mobile-new-line {
+        display: block;
+        margin-top: 15px;
+        margin-left: -50px;
+    }
+
+    .mobile-card-content {
+        margin-top: 10px;
+    }
+
+    .mobile-new-line-msme {
+        display: block;
+        margin-top: 35px;
+        margin-left: -50px;
+    }
+}
+
+/* ===== GLASSMORPHIC FORM ===== */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+body.dark .glass-panel {
+    background: rgba(30, 41, 59, 0.85);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.input-group {
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-text);
+}
+
+body.dark .input-group label {
+    color: #e2e8f0;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+body.dark .input-group input,
+body.dark .input-group textarea {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15);
+}
+
+body.dark .input-group input:focus,
+body.dark .input-group textarea:focus {
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2);
+}
+
+.form-status {
+    margin-top: 15px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: none;
+}
+
+.form-status.success {
+    display: block;
+    color: #22c55e;
+}
+
+/* Glow Button (from services popup) */
+.glow-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.glow-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.glow-btn:hover::before {
+    left: 100%;
+}
+
+/* ===== CONTACT DETAILS CARDS ===== */
+.contact-details-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-card {
+    display: flex;
+    align-items: flex-start;
+    background: #fff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .info-card {
+    background: #1e293b;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.card-icon {
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    margin-right: 20px;
+    margin-top: 5px;
+    background: rgba(255, 152, 0, 0.1);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.card-content h4 {
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    font-family: var(--font-primary);
+    color: var(--color-text);
+}
+
+body.dark .card-content h4 {
+    color: #fff;
+}
+
+.role-text {
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.contact-links a,
+.contact-links span {
+    color: var(--color-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s;
+}
+
+.contact-links a:hover {
+    color: var(--color-primary);
+}
+
+.social-links-inline {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.dark .social-links-inline {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.social-links-inline a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.3s;
+}
+
+body.dark .social-links-inline a {
+    color: #e2e8f0;
+}
+
+.social-links-inline a:hover {
+    color: var(--color-primary);
+}
+
+/* Business Status Indicator */
+.business-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 8px 15px;
+    background: rgba(34, 197, 94, 0.1);
+    color: #16a34a;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #22c55e;
+    animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+    0% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
+}
+
+/* Highlight Card (Registration) */
+.highlight-card {
+    border: 2px solid var(--color-accent);
+    background: linear-gradient(145deg, #ffffff, #f0f9ff);
+}
+
+body.dark .highlight-card {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border-color: var(--color-accent);
+}
+
+.udyam-box {
+    background: rgba(0, 0, 0, 0.04);
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-family: monospace;
+    font-size: 0.95rem;
+    color: var(--color-text);
+}
+
+body.dark .udyam-box {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.verify-link {
+    display: inline-block;
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.verify-link:hover {
+    color: var(--color-primary);
+}
+
+/* Animations */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+/* New CSS For Contact Form*/
+/* --- Modern Contact Form Styles --- */
+/* --- Interactive Contact Form Styling --- */
+/* --- Interactive Contact Form Styling --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+/* Base Input Styling - Unifies all fields to Dark Navy */
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Using a dark translucent background prevents it from looking solid white */
+    background-color: #1a1a2e;
+    /* Forces the sleek navy blue on all fields */
+    color: #ffffff;
+    /* Explicitly force text to be white */
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* Fix for Chrome/Safari Autofill forcing inputs to turn solid white */
+.input-group input:-webkit-autofill,
+.input-group input:-webkit-autofill:hover,
+.input-group input:-webkit-autofill:focus,
+.input-group textarea:-webkit-autofill,
+.input-group textarea:-webkit-autofill:hover,
+.input-group textarea:-webkit-autofill:focus,
+.input-group select:-webkit-autofill,
+.input-group select:-webkit-autofill:hover,
+.input-group select:-webkit-autofill:focus {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-box-shadow: 0 0 0px 1000px #1a1a2e inset !important;
+    /* Adjust #1a1a2e to match your dark background */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Focus States (Glow Effect) */
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: #3b82f6;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Darkens slightly on focus */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+/* Placeholder Styling */
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    /* Made slightly brighter for readability */
+}
+
+/* --- Custom Dropdown Styling --- */
+.input-group select {
+    /* 1. Hide the ugly default browser arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    /* 2. Add our own custom white SVG arrow */
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    /* Position the arrow on the right side */
+    background-position: right 1rem top 50%;
+    background-size: 0.65rem auto;
+
+    /* 3. Add padding so the text doesn't overlap the new arrow */
+    padding-right: 2.5rem;
+
+    /* 4. Prevent long text from breaking the layout */
+    text-overflow: ellipsis;
+}
+
+/* Force a dark background for the opened list (for browsers that support it) */
+.input-group select option {
+    background-color: #1e293b;
+    /* A sleek dark slate instead of default gray */
+    color: #ffffff;
+    padding: 10px;
+    /* Adds breathing room where supported */
+}
+
+/* Fix for Firefox to ensure the background color applies */
+.input-group select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #fff;
+}
+
+/* --- Mobile Adjustments --- */
+@media (max-width: 768px) {
+    .contact-form-wrapper {
+        padding: 1.5rem;
+        /* Reduces container padding on mobile */
+    }
+
+    .contact-form {
+        gap: 1rem;
+        /* Slightly tighter spacing between inputs */
+    }
+
+    .input-group input,
+    .input-group select,
+    .input-group textarea {
+        padding: 0.75rem 1rem;
+        /* Slightly shorter inputs for screen economy */
+        font-size: 1rem;
+        /* Prevents iOS Safari from auto-zooming on focus */
+    }
+}
+
+/* --- Form Validation & State Styling --- */
+
+/* Error Messages */
+.field-error {
+    color: #ef4444;
+    /* Red */
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 4px;
+    display: none;
+}
+
+.field-error.visible {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Input Error State - Keeps background dark so white text is visible */
+.input-error {
+    border-color: #ef4444 !important;
+    background-color: #2a1616 !important;
+    /* A very dark red tint instead of transparent */
+    box-shadow: 0 0 0 1px #ef4444 inset !important;
+}
+
+/* Character Counter Layout */
+.char-count-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 6px;
+    width: 100%;
+    /* Ensures it stretches across the bottom */
+}
+
+.char-count {
+    font-size: 0.8rem;
+    /* Changed from white to a sleek slate/gray color for light backgrounds */
+    color: #64748b;
+    margin-left: auto;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.char-count.near-limit {
+    color: #f59e0b;
+    /* Amber/Warning */
+}
+
+.char-count.at-limit {
+    color: #ef4444;
+    /* Red/Error */
+}
+
+/* Success Message */
+.form-success {
+    display: none;
+    margin-top: 15px;
+    padding: 12px 15px;
+    background: rgba(46, 204, 113, 0.1);
+    /* Transparent Green */
+    border: 1px solid rgba(46, 204, 113, 0.3);
+    border-radius: 8px;
+    color: #2ecc71;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.form-success.visible {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+/* Button Loading State */
+button.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Fallback Text */
+.fallback-text {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    text-align: center;
+    line-height: 1.5;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============= */
+.hero-availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #94a3b8;
+    background: rgba(74, 222, 128, 0.08);
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    padding: 8px 18px;
+    border-radius: 100px;
+    margin-bottom: 60px;
+}
+
+.availability-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.4);
+    animation: pulseDot 3s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 6px rgba(74, 222, 128, 0);
+    }
+}
+
+.hero-scroll-hint {
+    position: absolute;
+    bottom: -60px;
+    /* Adjusted to fit better */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 900;
+}
+
+.hero-scroll-hint:hover {
+    color: var(--amber);
+}
+
+.scroll-line {
+    margin-top: auto;
+    width: 3px;
+    height: 100px;
+    background: linear-gradient(to bottom, var(--text-dim), transparent);
+    animation: scrollBob 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollBob {
+
+    0%,
+    100% {
+        transform: scaleY(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scaleY(0.6);
+        opacity: 1;
+    }
+}
+
+/* Google Maps Section */
+.map-section {
+    max-width: 1100px;
+    margin: 20px auto 80px;
+    padding: 0 24px;
+    position: relative;
+}
+
+.map-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+}
+
+.map-section iframe {
+    width: 100%;
+    height: 450px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+    display: block;
+    filter: none;
+    /* No filter by default */
+    /* Cool dark map effect */
+    transition: filter 0.3s;
+}
+
+/* 2. Desktop only: Apply the dark effect and hover trigger */
+@media (hover: hover) {
+    .map-section iframe {
+        filter: grayscale(1) invert(0.9);
+        /* Start dark on desktop */
+    }
+
+    .map-section iframe:hover {
+        filter: none;
+        /* Turn colorful on hover */
+    }
+}
+
+/* 3. Mobile adjustments: Handle small screen sizing */
+@media (max-width: 768px) {
+    .map-section {
+        margin: 20px auto 40px;
+        padding: 0 16px;
+    }
+
+    .map-section iframe {
+        height: 300px;
+        /* Force color on mobile by overriding desktop filters */
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+}
+
+.map-button {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.map-open-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: var(--radius);
+    transition: background 0.3s ease;
+    box-shadow: var(--shadow-card);
+}
+
+.map-open-btn:hover {
+    background: linear-gradient(90deg,
+            #ffffff,
+            #ff6b3e);
+    color: black;
+}

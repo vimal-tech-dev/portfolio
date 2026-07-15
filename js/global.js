@@ -10,12 +10,15 @@ document.addEventListener("DOMContentLoaded", () => {
   if (hamburger && navLinks) {
     hamburger.addEventListener("click", () => {
       navLinks.classList.toggle("active");
+      // This toggles the 'active' class on the hamburger for the rotation
       hamburger.classList.toggle("active");
-      hamburger.textContent = navLinks.classList.contains("active") ? "✖" : "☰";
+      // This opens your actual menu
+      navLinks.classList.toggle("open");
+      hamburger.textContent = navLinks.classList.contains("active") ? "✕" : "☰";
     });
 
     // Close the menu when any nav link is clicked
-    navItems.forEach(link => {
+    navItems.forEach((link) => {
       link.addEventListener("click", () => {
         if (navLinks.classList.contains("active")) {
           navLinks.classList.remove("active");
@@ -27,7 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* ✅ NEW: Close the menu when clicking outside */
     document.addEventListener("click", (event) => {
-      const isClickInside = navLinks.contains(event.target) || hamburger.contains(event.target);
+      const isClickInside =
+        navLinks.contains(event.target) || hamburger.contains(event.target);
       if (!isClickInside && navLinks.classList.contains("active")) {
         navLinks.classList.remove("active");
         hamburger.classList.remove("active");
@@ -67,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
 
         // Get the index of this element in the NodeList
@@ -82,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, appearOptions);
 
     // Observe each .fade-in element
-    faders.forEach(fader => appearOnScroll.observe(fader));
+    faders.forEach((fader) => appearOnScroll.observe(fader));
   }
 
   /* ============================
@@ -94,18 +98,27 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", () => {
       let current = "";
 
-      sections.forEach(section => {
+      sections.forEach((section) => {
         const sectionTop = section.offsetTop - 100;
         const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+        if (
+          pageYOffset >= sectionTop &&
+          pageYOffset < sectionTop + sectionHeight
+        ) {
           current = section.getAttribute("id");
         }
       });
 
-      navItems.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${current}`) {
-          link.classList.add("active");
+      navItems.forEach((link) => {
+        const href = link.getAttribute("href");
+
+        // Only apply scroll spy to section links (#)
+        if (href.startsWith("#")) {
+          link.classList.remove("active");
+
+          if (href === `#${current}`) {
+            link.classList.add("active");
+          }
         }
       });
     });
@@ -114,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Dropdown toggle for Desktop
   const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
 
-  dropdownToggles.forEach(toggle => {
+  dropdownToggles.forEach((toggle) => {
     toggle.addEventListener("click", (e) => {
       e.preventDefault();
       const parent = toggle.parentElement;
@@ -130,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Ensure all dropdowns are closed on page load (prevents an open menu after refresh)
   function resetDropdowns() {
     const dropdowns = document.querySelectorAll(".dropdown");
-    dropdowns.forEach(drop => {
+    dropdowns.forEach((drop) => {
       drop.classList.remove("open");
       const menu = drop.querySelector(".dropdown-menu");
       if (menu) menu.style.display = "none";
@@ -142,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const isDropdownToggle = e.target.matches(".dropdown-toggle");
     const dropdown = e.target.closest(".dropdown");
 
-    document.querySelectorAll(".dropdown").forEach(drop => {
+    document.querySelectorAll(".dropdown").forEach((drop) => {
       const menu = drop.querySelector(".dropdown-menu");
 
       // If clicked outside this dropdown, close it
@@ -153,4 +166,57 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  /* ============================
+    Active Navbar Link per Page
+    ============================ */
+  const currentPage = window.location.pathname.split("/").pop();
+
+  navItems.forEach((link) => {
+    const linkPage = link.getAttribute("href");
+
+    if (linkPage === currentPage) {
+      link.classList.add("active");
+    }
+
+    // Special case: homepage
+    if (
+      (currentPage === "" || currentPage === "/") &&
+      linkPage === "index.html"
+    ) {
+      link.classList.add("active");
+    }
+  });
+
+  // targeting your anchor tags with href starting
+  // 1. Grab all the sections you want to track
+  const sectionDM = document.querySelectorAll("section[id]");
+
+  // 2. The function that handles the class switching
+  const navObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Get the ID of the section currently in view
+          const id = entry.target.getAttribute("id");
+
+          // Remove 'active' class from ALL links
+          document.querySelectorAll(".dropdown-menu a").forEach((link) => {
+            link.classList.remove("active");
+          });
+
+          // Add 'active' class to the link that matches the current section ID
+          const activeLink = document.querySelector(`a[href="#${id}"]`);
+          if (activeLink) {
+            activeLink.classList.add("active");
+          }
+        }
+      });
+    },
+    { threshold: 0.7 }
+  ); // 70% of section visible triggers the change
+
+  // 3. Start watching the sections
+  sectionDM.forEach((section) => {
+    navObserver.observe(section);
+  });
 });

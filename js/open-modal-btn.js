@@ -4,18 +4,30 @@ const btn = document.querySelector(".open-modal-btn");
 const close = document.querySelector(".close");
 
 // Open modal on button click
-btn.addEventListener("click", () => {
+if (btn && modal) {
+  btn.addEventListener("click", () => {
     modal.classList.add("show");
-});
+    // Prevent background scrolling
+    document.body.style.overflow = "hidden";
+  });
+}
 
 // Close modal on close button click
-close.addEventListener("click", () => {
+if (close && modal) {
+  close.addEventListener("click", () => {
     modal.classList.remove("show");
-});
+    // Restore background scrolling
+    document.body.style.overflow = "auto";
+  });
+}
 
 // Close modal on clicking outside the modal content
-window.addEventListener("click", (e) => {
+if (modal) {
+  window.addEventListener("click", (e) => {
     if (e.target === modal) {
-        modal.classList.remove("show");
+      modal.classList.remove("show");
+      // Restore background scrolling
+      document.body.style.overflow = "auto";
     }
-});
+  });
+}
